@@ -16,6 +16,7 @@
 		62F06D291DA2B82D00353999 /* APOD_swift2_3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D281DA2B82D00353999 /* APOD_swift2_3UITests.swift */; };
 		62F06D371DA2BBDA00353999 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D361DA2BBDA00353999 /* LineView.swift */; };
 		62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D381DA2BD3700353999 /* PathExtention.swift */; };
+		62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3A1DA2DDB500353999 /* MathVizPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		62F06D2A1DA2B82D00353999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62F06D361DA2BBDA00353999 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineView.swift; path = ../LineView.swift; sourceTree = "<group>"; };
 		62F06D381DA2BD3700353999 /* PathExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathExtention.swift; sourceTree = "<group>"; };
+		62F06D3A1DA2DDB500353999 /* MathVizPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathVizPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				62F06D0A1DA2B82D00353999 /* ViewController.swift */,
 				62F06D0C1DA2B82D00353999 /* Main.storyboard */,
 				62F06D081DA2B82D00353999 /* AppDelegate.swift */,
+				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
 				62F06D111DA2B82D00353999 /* LaunchScreen.storyboard */,
 				62F06D141DA2B82D00353999 /* Info.plist */,
 				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 				62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
+				62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

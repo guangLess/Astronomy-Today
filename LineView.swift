@@ -24,37 +24,40 @@ class LineView: UIView, Shapeble, CanBlink{
     var testPath = UIBezierPath()
     var outterRing = UIBezierPath()
     
-    override func draw(_ rect: CGRect) {
-        self.backgroundColor = UIColor.black
+    override func drawRect(rect: CGRect){
+        self.backgroundColor = UIColor.blackColor()
         // WHY protocols can not store or contain storage ?
         //FIXME: figure out why the struc has to be called after the previous methods.
         drawPathElements()
     }
     //MARK: drawElements
     func drawPathElements(){
-        testPath = creatSimpleShapeReturn(faceCenter, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI/3), clockwise: false, lineWidth: 1.0, pathColor: UIColor.white)
-        outterRing = creatSimpleShapeReturn(faceCenter, radius: faceRadius, startAngle: CGFloat(M_PI/3), endAngle: CGFloat(2*M_PI), clockwise: true, lineWidth: 0.2, pathColor: UIColor.white)
+        testPath = creatSimpleShapeReturn(faceCenter, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI/3), clockwise: false, lineWidth: 1.0, pathColor: UIColor.whiteColor())
+        outterRing = creatSimpleShapeReturn(faceCenter, radius: faceRadius, startAngle: CGFloat(M_PI/3), endAngle: CGFloat(2*M_PI), clockwise: true, lineWidth: 0.2, pathColor: UIColor.whiteColor())
         _ = MathVizPath(center: faceCenter)
         drawRadialGradient()
     }
     func drawRadialGradient(){
         let context = UIGraphicsGetCurrentContext()
         let locations: [CGFloat] = [0.0, 1.0]
-        let colorts = [UIColor.yellow.cgColor, UIColor.clear.cgColor]
+        let colorts = [UIColor.yellowColor().CGColor, UIColor.clearColor().CGColor]
         let colorspace = CGColorSpaceCreateDeviceRGB()
-        let gradient = CGGradient(colorsSpace: colorspace, colors: colorts as CFArray, locations: locations)
-        context?.drawRadialGradient(gradient!, startCenter: faceCenter, startRadius: CGFloat(0), endCenter: faceCenter, endRadius: CGFloat(160), options: .drawsAfterEndLocation)
+        let gradient = CGGradientCreateWithColors(colorspace, colorts, locations)
+            //CGGradient(colorsSpace: colorspace, colors: colorts as CFArray, locations: locations)
+        CGContextDrawRadialGradient(context, gradient, center, 0, center, CGFloat(160), .DrawsAfterEndLocation)
+        //context?.drawRadialGradient(gradient!, startCenter: faceCenter, startRadius: CGFloat(0), endCenter: faceCenter, endRadius: CGFloat(160), options: .drawsAfterEndLocation) CGContextDrawRadialGradient(context, gradient, center, 0, center, min(size.width, size.height) / 2, options)
+
     }
     
     //MARK: touch event
     var isMiddleLocationTapped = false
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touchPoint = touches.first {
-            let touchLocation = touchPoint.location(in: self)
-            isMiddleLocationTapped = testPath.contains(touchLocation)
+            let touchLocation = touchPoint.locationInView(self)  //touchPoint.location(in: self)
+            isMiddleLocationTapped = testPath.containsPoint(touchLocation)//testPath.contains(touchLocation)
             if isMiddleLocationTapped == true {
                 configerTimer()
-                blink(testPath, blinkColor: UIColor.yellow)
+                blink(testPath, blinkColor: UIColor.yellowColor())
             }
             print(touchLocation)
         }
@@ -62,13 +65,13 @@ class LineView: UIView, Shapeble, CanBlink{
     
     var timeSequence = 0.1
     var timeSineValue: Double = 1
-    var timer = Timer()
+    var timer = NSTimer()
     var timerState = true
     func configerTimer(){
         if timerState == false {
             timer.invalidate()
         } else {
-            timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector:#selector(self.timerMachin), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector:#selector(self.timerMachin), userInfo: nil, repeats: true)
             timer.fire()
         }
         timerState = !timerState
@@ -90,13 +93,14 @@ class LineView: UIView, Shapeble, CanBlink{
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.duration = 4
         animation.repeatCount = 1
-        animation.path = testPath.cgPath
+        animation.path = testPath.CGPath
         
         let dot = UIView()
         let size = CGSize(width: 4, height: 4)
         dot.frame = CGRect(origin: faceCenter, size: size)
-        dot.backgroundColor = UIColor.yellow
+        dot.backgroundColor = UIColor.yellowColor()
         self.addSubview(dot)
-        dot.layer.add(animation, forKey: nil)
+        dot.layer.addAnimation(animation, forKey: nil)
+        //dot.layer.add(animation, forKey: nil)
     }
 }
