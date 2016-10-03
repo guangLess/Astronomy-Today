@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeX-QR-HYC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IeX-QR-HYC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5Tz-7d-DO8"/>
+                            <constraint firstAttribute="trailing" secondItem="IeX-QR-HYC" secondAttribute="trailing" id="Eh1-Rk-W6D"/>
+                            <constraint firstItem="IeX-QR-HYC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="d5b-ov-Gdp"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="IeX-QR-HYC" secondAttribute="bottom" id="qWc-f2-bbu"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

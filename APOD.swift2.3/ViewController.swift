@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //    @IBOutlet weak var lineViewOne: LineView!
+
+    @IBOutlet var lineViewOne: LineView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
