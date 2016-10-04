@@ -147,26 +147,62 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwx-O7-mxp">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <color key="backgroundColor" red="0.2397411616" green="0.2397411616" blue="0.2397411616" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="scrollIndicatorInsets" minX="4" minY="2" maxX="4" maxY="4"/>
                                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.75693623310810809" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgU-sP-nn8">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                <state key="normal" title="share">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="424" y="0.0" width="218" height="77"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="shareButton:" destination="R9L-h8-BOg" eventType="touchUpInside" id="uZR-b9-rRd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6i-UU-grR">
+                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                                <state key="normal" title="save">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="R9L-h8-BOg" eventType="touchUpInside" id="F8G-mm-Gr2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.99400529449999997" blue="0.45113310880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="nwx-O7-mxp" secondAttribute="bottom" id="BHU-v9-H6T"/>
+                                            <constraint firstItem="xgU-sP-nn8" firstAttribute="leading" secondItem="nwx-O7-mxp" secondAttribute="trailing" constant="8" symbolic="YES" id="E66-Ic-ahD"/>
                                             <constraint firstItem="nwx-O7-mxp" firstAttribute="leading" secondItem="kWs-a4-nIG" secondAttribute="leading" id="Efk-ar-SrE"/>
                                             <constraint firstItem="nwx-O7-mxp" firstAttribute="top" secondItem="kWs-a4-nIG" secondAttribute="top" id="JbF-se-3fe"/>
-                                            <constraint firstItem="nwx-O7-mxp" firstAttribute="trailing" secondItem="kWs-a4-nIG" secondAttribute="trailing" multiplier="0.65" id="Kha-AE-yvE">
+                                            <constraint firstItem="nwx-O7-mxp" firstAttribute="trailing" secondItem="kWs-a4-nIG" secondAttribute="trailing" multiplier="0.64" id="Kha-AE-yvE">
                                                 <variation key="heightClass=regular" constant="0.0"/>
                                             </constraint>
+                                            <constraint firstItem="M6i-UU-grR" firstAttribute="top" secondItem="xgU-sP-nn8" secondAttribute="bottom" constant="5" id="N0V-fN-Mmf"/>
+                                            <constraint firstAttribute="trailing" secondItem="xgU-sP-nn8" secondAttribute="trailing" constant="7" id="QoD-1u-FA9"/>
+                                            <constraint firstItem="xgU-sP-nn8" firstAttribute="leading" secondItem="M6i-UU-grR" secondAttribute="leading" id="W4d-32-7ZH"/>
+                                            <constraint firstItem="M6i-UU-grR" firstAttribute="bottom" secondItem="nwx-O7-mxp" secondAttribute="bottom" id="We4-1G-3XI"/>
+                                            <constraint firstItem="xgU-sP-nn8" firstAttribute="height" secondItem="nwx-O7-mxp" secondAttribute="height" multiplier="0.5" id="Xpi-Mn-5Hz"/>
                                             <constraint firstAttribute="width" constant="649" id="f7H-Fb-h7s"/>
+                                            <constraint firstItem="xgU-sP-nn8" firstAttribute="trailing" secondItem="M6i-UU-grR" secondAttribute="trailing" id="jtL-ax-WrS"/>
+                                            <constraint firstItem="xgU-sP-nn8" firstAttribute="top" secondItem="nwx-O7-mxp" secondAttribute="top" id="myt-d0-0gF"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="nwx-O7-mxp"/>
+                                                <exclude reference="xgU-sP-nn8"/>
+                                                <exclude reference="M6i-UU-grR"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="f7H-Fb-h7s"/>
@@ -174,11 +210,21 @@
                                                 <exclude reference="Efk-ar-SrE"/>
                                                 <exclude reference="JbF-se-3fe"/>
                                                 <exclude reference="Kha-AE-yvE"/>
+                                                <exclude reference="E66-Ic-ahD"/>
+                                                <exclude reference="QoD-1u-FA9"/>
+                                                <exclude reference="W4d-32-7ZH"/>
+                                                <exclude reference="Xpi-Mn-5Hz"/>
+                                                <exclude reference="jtL-ax-WrS"/>
+                                                <exclude reference="myt-d0-0gF"/>
+                                                <exclude reference="N0V-fN-Mmf"/>
+                                                <exclude reference="We4-1G-3XI"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular">
                                             <mask key="subviews">
                                                 <include reference="nwx-O7-mxp"/>
+                                                <include reference="xgU-sP-nn8"/>
+                                                <include reference="M6i-UU-grR"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="f7H-Fb-h7s"/>
@@ -186,11 +232,19 @@
                                                 <include reference="Efk-ar-SrE"/>
                                                 <include reference="JbF-se-3fe"/>
                                                 <include reference="Kha-AE-yvE"/>
+                                                <include reference="E66-Ic-ahD"/>
+                                                <include reference="QoD-1u-FA9"/>
+                                                <include reference="W4d-32-7ZH"/>
+                                                <include reference="Xpi-Mn-5Hz"/>
+                                                <include reference="jtL-ax-WrS"/>
+                                                <include reference="myt-d0-0gF"/>
+                                                <include reference="N0V-fN-Mmf"/>
+                                                <include reference="We4-1G-3XI"/>
                                             </mask>
                                         </variation>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kWs-a4-nIG" firstAttribute="top" secondItem="iXT-f3-jnC" secondAttribute="top" id="2VR-mR-3sk"/>
                                     <constraint firstAttribute="bottom" secondItem="kWs-a4-nIG" secondAttribute="bottom" id="L69-wS-TRX"/>

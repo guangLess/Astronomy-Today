@@ -19,7 +19,6 @@ struct Today {
         return Today(date: date, explanation: explanation, media_type: media_type, title: title, url: url, copyright: copyright)
     }
 }
-
 protocol NetworkController {
     func getTodayInfo(completion: Today -> Void)
 }
