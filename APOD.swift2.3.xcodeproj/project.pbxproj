@@ -17,6 +17,8 @@
 		62F06D371DA2BBDA00353999 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D361DA2BBDA00353999 /* LineView.swift */; };
 		62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D381DA2BD3700353999 /* PathExtention.swift */; };
 		62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3A1DA2DDB500353999 /* MathVizPath.swift */; };
+		62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3C1DA3559000353999 /* ApodViewController.swift */; };
+		62F06D3F1DA3829D00353999 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3E1DA3829D00353999 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		62F06D361DA2BBDA00353999 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineView.swift; path = ../LineView.swift; sourceTree = "<group>"; };
 		62F06D381DA2BD3700353999 /* PathExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathExtention.swift; sourceTree = "<group>"; };
 		62F06D3A1DA2DDB500353999 /* MathVizPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathVizPath.swift; sourceTree = "<group>"; };
+		62F06D3C1DA3559000353999 /* ApodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodViewController.swift; sourceTree = "<group>"; };
+		62F06D3E1DA3829D00353999 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +107,11 @@
 		62F06D071DA2B82D00353999 /* APOD.swift2.3 */ = {
 			isa = PBXGroup;
 			children = (
-				62F06D381DA2BD3700353999 /* PathExtention.swift */,
-				62F06D361DA2BBDA00353999 /* LineView.swift */,
-				62F06D0A1DA2B82D00353999 /* ViewController.swift */,
+				62F06D411DA3836800353999 /* MathDrawing */,
+				62F06D401DA3832C00353999 /* APOD */,
 				62F06D0C1DA2B82D00353999 /* Main.storyboard */,
-				62F06D081DA2B82D00353999 /* AppDelegate.swift */,
-				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
 				62F06D111DA2B82D00353999 /* LaunchScreen.storyboard */,
+				62F06D081DA2B82D00353999 /* AppDelegate.swift */,
 				62F06D141DA2B82D00353999 /* Info.plist */,
 				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
 			);
@@ -132,6 +134,26 @@
 				62F06D2A1DA2B82D00353999 /* Info.plist */,
 			);
 			path = APOD.swift2.3UITests;
+			sourceTree = "<group>";
+		};
+		62F06D401DA3832C00353999 /* APOD */ = {
+			isa = PBXGroup;
+			children = (
+				62F06D3E1DA3829D00353999 /* Network.swift */,
+				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
+			);
+			name = APOD;
+			sourceTree = "<group>";
+		};
+		62F06D411DA3836800353999 /* MathDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				62F06D381DA2BD3700353999 /* PathExtention.swift */,
+				62F06D361DA2BBDA00353999 /* LineView.swift */,
+				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
+				62F06D0A1DA2B82D00353999 /* ViewController.swift */,
+			);
+			name = MathDrawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,8 +289,10 @@
 			files = (
 				62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */,
 				62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */,
+				62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
+				62F06D3F1DA3829D00353999 /* Network.swift in Sources */,
 				62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

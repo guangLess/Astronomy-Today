@@ -23,7 +23,6 @@ struct MathVizPath {
         let x = 150.1
         let y = 130.5
         pathMV.moveToPoint(CGPoint(x: x, y: y))
-        //pathMV.move(to: CGPoint(x: x, y: y))
         for i in 0...7 {
             let fi = Double(i)
             let exCosine = (2 * cos(fi/(2.0 * M_2_PI)))

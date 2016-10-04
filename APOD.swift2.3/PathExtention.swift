@@ -28,24 +28,23 @@ extension CanBlink where Self: UIView {
         blinkPathLayer.fillColor = blinkColor.CGColor
         blinkPathLayer.opacity = 0
         self.layer.addSublayer(blinkPathLayer)
-        
         let blinkAnimation = CAKeyframeAnimation(keyPath: "opacity")
         blinkAnimation.values = [0.0, 1.0,1.0,1.0,1.0,1.0,0.0]
         blinkAnimation.duration = 1
         blinkPathLayer.addAnimation(blinkAnimation, forKey: "blinkAnimation")
-        //blinkPathLayer.add(blinkAnimation, forKey:"blinkAnimation")
+    }
+    //thickness
+    func blinkStock(path: UIBezierPath){
+        let blinkPathLayer = CAShapeLayer()
+        blinkPathLayer.path = path.CGPath
+        blinkPathLayer.strokeStart = 0
+        blinkPathLayer.strokeEnd = 3
+        self.layer.addSublayer(blinkPathLayer)
+        let blinkAnimation = CAKeyframeAnimation(keyPath: "Stroke")
+        blinkAnimation.values = [0.0, 1.0,1.0,1.0,1.0,1.0,0.0]
+        blinkAnimation.duration = 1
+        blinkPathLayer.addAnimation(blinkAnimation, forKey: "blinkAnimation")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 

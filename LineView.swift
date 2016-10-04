@@ -9,12 +9,9 @@
 import UIKit
 import Foundation
 //TODO: ttps://realm.io/news/richard-fox-casting-swift-2/ try extions.
-
 class LineView: UIView, Shapeble, CanBlink{
-    
     var faceCenter: CGPoint {
         return convertPoint(center, fromView: superview)
-
     }
     var scale : CGFloat = 0.9 {didSet{setNeedsDisplay()}}
     var colour : UIColor = UIColor.whiteColor() {didSet{ setNeedsDisplay() }}
@@ -23,6 +20,7 @@ class LineView: UIView, Shapeble, CanBlink{
     }
     var testPath = UIBezierPath()
     var outterRing = UIBezierPath()
+    var mathPath = UIBezierPath()
     
     override func drawRect(rect: CGRect){
         self.backgroundColor = UIColor.blackColor()
@@ -34,7 +32,7 @@ class LineView: UIView, Shapeble, CanBlink{
     func drawPathElements(){
         testPath = creatSimpleShapeReturn(faceCenter, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI/3), clockwise: false, lineWidth: 1.0, pathColor: UIColor.whiteColor())
         outterRing = creatSimpleShapeReturn(faceCenter, radius: faceRadius, startAngle: CGFloat(M_PI/3), endAngle: CGFloat(2*M_PI), clockwise: true, lineWidth: 0.2, pathColor: UIColor.whiteColor())
-        _ = MathVizPath(center: faceCenter)
+        mathPath = MathVizPath(center: faceCenter).pathMV
         drawRadialGradient()
     }
     func drawRadialGradient(){
@@ -43,14 +41,11 @@ class LineView: UIView, Shapeble, CanBlink{
         let colorts = [UIColor.yellowColor().CGColor, UIColor.clearColor().CGColor]
         let colorspace = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradientCreateWithColors(colorspace, colorts, locations)
-            //CGGradient(colorsSpace: colorspace, colors: colorts as CFArray, locations: locations)
         CGContextDrawRadialGradient(context, gradient, center, 0, center, CGFloat(160), .DrawsAfterEndLocation)
-        //context?.drawRadialGradient(gradient!, startCenter: faceCenter, startRadius: CGFloat(0), endCenter: faceCenter, endRadius: CGFloat(160), options: .drawsAfterEndLocation) CGContextDrawRadialGradient(context, gradient, center, 0, center, min(size.width, size.height) / 2, options)
-
     }
-    
     //MARK: touch event
     var isMiddleLocationTapped = false
+    var isMathDrawingTapped = false
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touchPoint = touches.first {
             let touchLocation = touchPoint.locationInView(self)  //touchPoint.location(in: self)
@@ -59,11 +54,14 @@ class LineView: UIView, Shapeble, CanBlink{
                 configerTimer()
                 blink(testPath, blinkColor: UIColor.yellowColor())
             }
+            isMathDrawingTapped = mathPath.containsPoint(touchLocation)
+            if isMathDrawingTapped == true {
+                //blinkStock(mathPath)
+            }
             print(touchLocation)
         }
     }
-    
-    var timeSequence = 0.1
+   var timeSequence = 0.1
     var timeSineValue: Double = 1
     var timer = NSTimer()
     var timerState = true
@@ -76,7 +74,6 @@ class LineView: UIView, Shapeble, CanBlink{
         }
         timerState = !timerState
     }
-    
     func timerMachin() {
         timeSineValue += 1/M_2_PI
         if timeSineValue == M_2_PI {
@@ -89,18 +86,15 @@ class LineView: UIView, Shapeble, CanBlink{
         let r = Double(faceRadius) * cos(timeSineValue) * sin(timeSequence)
         let tempT = CGFloat(r)
         let testPath = UIBezierPath(arcCenter: faceCenter, radius: tempT, startAngle: CGFloat(M_PI), endAngle: CGFloat(M_PI/3), clockwise: false)
-        
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.duration = 4
         animation.repeatCount = 1
         animation.path = testPath.CGPath
-        
         let dot = UIView()
         let size = CGSize(width: 4, height: 4)
         dot.frame = CGRect(origin: faceCenter, size: size)
         dot.backgroundColor = UIColor.yellowColor()
         self.addSubview(dot)
         dot.layer.addAnimation(animation, forKey: nil)
-        //dot.layer.add(animation, forKey: nil)
     }
 }
