@@ -59,37 +59,10 @@ class ApodViewController: UIViewController {
     @IBAction func saveButton(sender: UIButton) {
         
         let testImage = UIImage(named: "noun_95490_cc")
-//        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
-//            let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
-//            let assetPlaceHolder = assetRequest.placeholderForCreatedAsset
-//            let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: assetCollection, assets: self.photosAsset)
-//
-//            
-//        }) { (<#Bool#>, <#NSError?#>) in
-//                //
-//        }
-        
-        /*
-         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-         PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:<#your photo here#>];
-         } completionHandler:^(BOOL success, NSError *error) {
-         if (success) {
-         <#your completion code here#>
-         }
-         else {
-         <#figure out what went wrong#>
-         }
-         }];
-         */
         
         
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
             let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
-//            let assetPlaceholder = assetRequest.placeholderForCreatedAsset
-//            let assetCollection:PHAssetCollection = fetchResult.firstObject;
-//
-//            let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: PHAssetCollectionfetchResult.firstObject, assets: self.photosAsset)
-  //          albumChangeRequest!.addAssets([assetPlaceholder!])
             }, completionHandler: { success, error in
                 print("added image to album")
                 print(error)

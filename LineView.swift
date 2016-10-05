@@ -1,4 +1,3 @@
-//
 //  LineView.swift
 //  APOD
 //
@@ -41,7 +40,7 @@ class LineView: UIView, Shapeble, CanBlink{
         let colorts = [UIColor.yellowColor().CGColor, UIColor.clearColor().CGColor]
         let colorspace = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradientCreateWithColors(colorspace, colorts, locations)
-        CGContextDrawRadialGradient(context, gradient, center, 0, center, CGFloat(160), .DrawsAfterEndLocation)
+        CGContextDrawRadialGradient(context!, gradient!, center, 0, center, CGFloat(160), .DrawsAfterEndLocation)
     }
     //MARK: touch event
     var isMiddleLocationTapped = false

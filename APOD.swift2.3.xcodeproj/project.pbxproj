@@ -128,13 +128,10 @@
 			children = (
 				62F06D411DA3836800353999 /* MathDrawing */,
 				62F06D401DA3832C00353999 /* APOD */,
-				62F06D0C1DA2B82D00353999 /* Main.storyboard */,
 				62F06D111DA2B82D00353999 /* LaunchScreen.storyboard */,
+				62F06D0C1DA2B82D00353999 /* Main.storyboard */,
 				62F06D081DA2B82D00353999 /* AppDelegate.swift */,
 				62F06D141DA2B82D00353999 /* Info.plist */,
-				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
-				62F06D591DA48A5F00353999 /* noun_95490_cc.png */,
-				62F06D421DA44CD800353999 /* noun_84091_cc.png */,
 			);
 			path = APOD.swift2.3;
 			sourceTree = "<group>";
@@ -163,6 +160,9 @@
 				62F06D3E1DA3829D00353999 /* Network.swift */,
 				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
+				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
+				62F06D591DA48A5F00353999 /* noun_95490_cc.png */,
+				62F06D421DA44CD800353999 /* noun_84091_cc.png */,
 			);
 			name = APOD;
 			sourceTree = "<group>";
@@ -247,6 +247,7 @@
 				TargetAttributes = {
 					62F06D041DA2B82D00353999 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 57675254DH;
 					};
 					62F06D181DA2B82D00353999 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -411,11 +412,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -450,9 +452,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -461,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 57675254DH;
 				INFOPLIST_FILE = APOD.swift2.3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "waterBB.optional.APOD-swift2-3";
@@ -472,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 57675254DH;
 				INFOPLIST_FILE = APOD.swift2.3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "waterBB.optional.APOD-swift2-3";
@@ -544,6 +549,7 @@
 				62F06D2F1DA2B82D00353999 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62F06D301DA2B82D00353999 /* Build configuration list for PBXNativeTarget "APOD.swift2.3Tests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +558,7 @@
 				62F06D321DA2B82D00353999 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62F06D331DA2B82D00353999 /* Build configuration list for PBXNativeTarget "APOD.swift2.3UITests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +567,7 @@
 				62F06D351DA2B82D00353999 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
