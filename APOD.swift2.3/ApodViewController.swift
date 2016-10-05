@@ -5,6 +5,7 @@
 //  Copyright © 2016 Guang. All rights reserved.
 
 import UIKit
+import Photos
 
 class ApodViewController: UIViewController {
     lazy var apodNetwork: NetworkController = ApodNetwork()
@@ -29,22 +30,77 @@ class ApodViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     func updateUI(x:Today){
+        //FIXME: use a whole dataset for none URLsession 
+        /*
+         "error": {
+         "code": "OVER_RATE_LIMIT",
+         "message": "You have exceeded your rate limit. Try again later or contact us at https://api.nasa.gov/contact/ for assistance"
+         }
+         })
+         */
         //self.todayImageViewOutlet.image = UIImage(data: try! Data(contentsOf: url)) "http://apod.nasa.gov/apod/image/1610/EagleNebula_Hendren_960.jpg"
         let imageData = NSData(contentsOfURL: NSURL(string:x.url)!)
-        _ = UIImage(data: imageData!)
-
+//        _ = UIImage(data: imageData!)
         todayTitle.text = x.title
         descriptionText.text = x.explanation
         todayDate.text = x.date
         copyright.text = x.copyright
+        //todayImageView.image  = UIImage(named: "noun_84091_cc")
         todayImageView.image = UIImage(data: imageData!)
     }
     
     @IBAction func shareButton(sender: UIButton) {
+        print ("button share called")
+        if let shareImage = UIImage(named: "noun_84091_cc"){
+            let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    @IBAction func saveButton(sender: UIButton) {
+        
+        let testImage = UIImage(named: "noun_95490_cc")
+//        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
+//            let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
+//            let assetPlaceHolder = assetRequest.placeholderForCreatedAsset
+//            let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: assetCollection, assets: self.photosAsset)
+//
+//            
+//        }) { (<#Bool#>, <#NSError?#>) in
+//                //
+//        }
+        
+        /*
+         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+         PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:<#your photo here#>];
+         } completionHandler:^(BOOL success, NSError *error) {
+         if (success) {
+         <#your completion code here#>
+         }
+         else {
+         <#figure out what went wrong#>
+         }
+         }];
+         */
+        
+        
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+            let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
+//            let assetPlaceholder = assetRequest.placeholderForCreatedAsset
+//            let assetCollection:PHAssetCollection = fetchResult.firstObject;
+//
+//            let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: PHAssetCollectionfetchResult.firstObject, assets: self.photosAsset)
+  //          albumChangeRequest!.addAssets([assetPlaceholder!])
+            }, completionHandler: { success, error in
+                print("added image to album")
+                print(error)
+            })
+
     }
     
-    @IBAction func saveButton(sender: UIButton) {
-    }
+
+    
+    
+    
     
     /*
     // MARK: - Navigation

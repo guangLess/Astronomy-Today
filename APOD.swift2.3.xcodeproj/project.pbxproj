@@ -20,6 +20,8 @@
 		62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3C1DA3559000353999 /* ApodViewController.swift */; };
 		62F06D3F1DA3829D00353999 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3E1DA3829D00353999 /* Network.swift */; };
 		62F06D431DA44CD800353999 /* noun_84091_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D421DA44CD800353999 /* noun_84091_cc.png */; };
+		62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */; };
+		62F06D5A1DA48A5F00353999 /* noun_95490_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D591DA48A5F00353999 /* noun_95490_cc.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,19 @@
 			remoteInfo = APOD.swift2.3;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		62F06D561DA45FF100353999 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		62F06D051DA2B82D00353999 /* APOD.swift2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.swift2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +74,8 @@
 		62F06D3C1DA3559000353999 /* ApodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodViewController.swift; sourceTree = "<group>"; };
 		62F06D3E1DA3829D00353999 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		62F06D421DA44CD800353999 /* noun_84091_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_84091_cc.png; sourceTree = "<group>"; };
+		62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtentionProtocol.swift; sourceTree = "<group>"; };
+		62F06D591DA48A5F00353999 /* noun_95490_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_95490_cc.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +133,7 @@
 				62F06D081DA2B82D00353999 /* AppDelegate.swift */,
 				62F06D141DA2B82D00353999 /* Info.plist */,
 				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
+				62F06D591DA48A5F00353999 /* noun_95490_cc.png */,
 				62F06D421DA44CD800353999 /* noun_84091_cc.png */,
 			);
 			path = APOD.swift2.3;
@@ -143,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				62F06D3E1DA3829D00353999 /* Network.swift */,
+				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 			);
 			name = APOD;
@@ -169,6 +188,7 @@
 				62F06D011DA2B82D00353999 /* Sources */,
 				62F06D021DA2B82D00353999 /* Frameworks */,
 				62F06D031DA2B82D00353999 /* Resources */,
+				62F06D561DA45FF100353999 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -264,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F06D131DA2B82D00353999 /* LaunchScreen.storyboard in Resources */,
+				62F06D5A1DA48A5F00353999 /* noun_95490_cc.png in Resources */,
 				62F06D101DA2B82D00353999 /* Assets.xcassets in Resources */,
 				62F06D431DA44CD800353999 /* noun_84091_cc.png in Resources */,
 				62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */,
@@ -297,6 +318,7 @@
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
 				62F06D3F1DA3829D00353999 /* Network.swift in Sources */,
+				62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */,
 				62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

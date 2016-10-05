@@ -24,7 +24,7 @@ protocol NetworkController {
 }
 class ApodNetwork: NetworkController {
     func getTodayInfo(completion: Today -> Void) {
-        let urlString = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+        let urlString = "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T"//DEMO_KEY"
         let request = NSURLRequest(URL:NSURL(string:urlString)!)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
@@ -50,3 +50,4 @@ class ApodNetwork: NetworkController {
         task.resume()
     }
 }
+
