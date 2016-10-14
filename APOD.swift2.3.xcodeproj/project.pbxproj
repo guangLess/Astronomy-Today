@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627564841DA55A8C001E624F /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 627564831DA55A8C001E624F /* x.png */; };
 		62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D081DA2B82D00353999 /* AppDelegate.swift */; };
 		62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D0A1DA2B82D00353999 /* ViewController.swift */; };
 		62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D0C1DA2B82D00353999 /* Main.storyboard */; };
@@ -19,7 +20,6 @@
 		62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3A1DA2DDB500353999 /* MathVizPath.swift */; };
 		62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3C1DA3559000353999 /* ApodViewController.swift */; };
 		62F06D3F1DA3829D00353999 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3E1DA3829D00353999 /* Network.swift */; };
-		62F06D431DA44CD800353999 /* noun_84091_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D421DA44CD800353999 /* noun_84091_cc.png */; };
 		62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */; };
 		62F06D5A1DA48A5F00353999 /* noun_95490_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D591DA48A5F00353999 /* noun_95490_cc.png */; };
 /* End PBXBuildFile section */
@@ -55,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		627564831DA55A8C001E624F /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		62F06D051DA2B82D00353999 /* APOD.swift2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.swift2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F06D081DA2B82D00353999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F06D0A1DA2B82D00353999 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		62F06D3A1DA2DDB500353999 /* MathVizPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathVizPath.swift; sourceTree = "<group>"; };
 		62F06D3C1DA3559000353999 /* ApodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodViewController.swift; sourceTree = "<group>"; };
 		62F06D3E1DA3829D00353999 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		62F06D421DA44CD800353999 /* noun_84091_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_84091_cc.png; sourceTree = "<group>"; };
 		62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtentionProtocol.swift; sourceTree = "<group>"; };
 		62F06D591DA48A5F00353999 /* noun_95490_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_95490_cc.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,8 +161,8 @@
 				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				62F06D0F1DA2B82D00353999 /* Assets.xcassets */,
+				627564831DA55A8C001E624F /* x.png */,
 				62F06D591DA48A5F00353999 /* noun_95490_cc.png */,
-				62F06D421DA44CD800353999 /* noun_84091_cc.png */,
 			);
 			name = APOD;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Guang;
 				TargetAttributes = {
 					62F06D041DA2B82D00353999 = {
@@ -287,7 +287,7 @@
 				62F06D131DA2B82D00353999 /* LaunchScreen.storyboard in Resources */,
 				62F06D5A1DA48A5F00353999 /* noun_95490_cc.png in Resources */,
 				62F06D101DA2B82D00353999 /* Assets.xcassets in Resources */,
-				62F06D431DA44CD800353999 /* noun_84091_cc.png in Resources */,
+				627564841DA55A8C001E624F /* x.png in Resources */,
 				62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,8 +389,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -435,8 +437,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

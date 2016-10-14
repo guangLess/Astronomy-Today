@@ -12,8 +12,8 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var todayTitle: UILabel!
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var descriptionText: UITextView!
-    @IBOutlet weak var todayDate: UILabel!
-    @IBOutlet weak var copyright: UILabel!
+    //@IBOutlet weak var todayDate: UILabel!
+    //@IBOutlet weak var copyright: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
     
     
@@ -30,57 +30,43 @@ class ApodViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     func updateUI(x:Today){
-        //FIXME: use a whole dataset for none URLsession 
-        /*
-         "error": {
-         "code": "OVER_RATE_LIMIT",
-         "message": "You have exceeded your rate limit. Try again later or contact us at https://api.nasa.gov/contact/ for assistance"
-         }
-         })
-         */
+        //FIXME: use a whole dataset for none URLsession
         //self.todayImageViewOutlet.image = UIImage(data: try! Data(contentsOf: url)) "http://apod.nasa.gov/apod/image/1610/EagleNebula_Hendren_960.jpg"
+
         let imageData = NSData(contentsOfURL: NSURL(string:x.url)!)
-//        _ = UIImage(data: imageData!)
         todayTitle.text = x.title
         descriptionText.text = x.explanation
-        todayDate.text = x.date
-        copyright.text = x.copyright
-        //todayImageView.image  = UIImage(named: "noun_84091_cc")
+        //todayDate.text = x.date
+        //copyright.text = x.copyright
+        //todayImageView.image  = UIImage(named: "x.png")
         todayImageView.image = UIImage(data: imageData!)
     }
-    
     @IBAction func shareButton(sender: UIButton) {
         print ("button share called")
-        if let shareImage = UIImage(named: "noun_84091_cc"){
+        if let shareImage = UIImage(named: "x.png"){
             let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
             self.presentViewController(vc, animated: true, completion: nil)
         }
     }
     @IBAction func saveButton(sender: UIButton) {
-        
-        let testImage = UIImage(named: "noun_95490_cc")
-        
-        
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
-            }, completionHandler: { success, error in
-                print("added image to album")
-                print(error)
-            })
-
+        let testImage = UIImage(named: "x.png")
+        //_:String = "Camera Roll"
+        //let options:PHFetchOptions = PHFetchOptions()
+        //options.predicate = NSPredicate(format: "title = %@","Camera Roll")
+        //let userAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .SmartAlbumUserLibrary, options: nil)
+        //let collection = userAlbums.firstObject as! PHAssetCollection
+        //print(collection)
+                    PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                        PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
+                       /*
+                        let assetPlaceholder = assetRequest.placeholderForCreatedAsset
+                        let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: collection)
+                        albumChangeRequest!.addAssets([assetPlaceholder!] as NSArray)
+                        print(assetPlaceholder?.localIdentifier)
+ */
+                        }, completionHandler: { success, error in
+                            print("added image to album\(success)")
+                            if !success { print("error creating asset: \(error)")}
+                    })
     }
-    
-
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
