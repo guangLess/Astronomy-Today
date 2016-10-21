@@ -14,12 +14,14 @@ struct MathVizPath {
     var pathMV = UIBezierPath()
     var ringCenter = CGPoint()
     var cardiodPath = UIBezierPath()
-    init (center: CGPoint){
+    var addRay:Float = 0.0
+    init (center: CGPoint, motion: Float){
         self.ringCenter = center
-        makeShape()
+        self.addRay = motion
+        makeShape(addRay)
     }
 
-    private func makeShape() {
+    private func makeShape(addRay: Float) {
         let x = 150.1
         let y = 130.5
         pathMV.moveToPoint(CGPoint(x: x, y: y))

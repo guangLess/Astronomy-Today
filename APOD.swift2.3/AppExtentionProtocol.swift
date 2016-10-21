@@ -12,22 +12,13 @@ import UIKit
 protocol ExtentionProtocol {
     func shareExtention(apod:Today)
 }
-//FIXME: add saved as PDF later
+//FIXME: add saved as PDF later, make share into a protocol?
 class AppExtention: ExtentionProtocol{
-    
+
     func shareExtention(apod:Today) {
-        
-        /*
-         let string: String = ...
-         let URL: NSURL = ...
-         
-         let activityViewController = UIActivityViewController(activityItems: [string, URL], applicationActivities: nil)
-         navigationController?.presentViewController(activityViewController, animated: true) {
-         // ...
-         }
-         */
-       // let activityViewController = UIActivityViewController(activityItems: apod, applicationActivities: nil)
+
     }
+    
     
 
 }

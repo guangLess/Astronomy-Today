@@ -3,7 +3,6 @@
 //  APOD.swift2.3
 //  Created by Guang on 10/3/16.
 //  Copyright © 2016 Guang. All rights reserved.
-
 import UIKit
 import Photos
 
@@ -12,44 +11,61 @@ class ApodViewController: UIViewController {
     @IBOutlet weak var todayTitle: UILabel!
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var descriptionText: UITextView!
-    //@IBOutlet weak var todayDate: UILabel!
-    //@IBOutlet weak var copyright: UILabel!
     @IBOutlet weak var todayImageView: UIImageView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var spin: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apodNetwork.getTodayInfo { x in
+        //spin.addSubview(UIImageView(image: UIImage(named: "x.png")).contentMode.rawValue = 1)
+        let bimage = UIImageView(image: UIImage(named: "PM.jpg"))
+        let or = spin.frame.origin
+//        spin.transform = CGAffineTransformMakeScale(0.5, 0.5)
+//        let size = spin.bounds.size
+
+        bimage.frame = CGRect(origin: or, size: CGSize(width: 100, height: 100))
+        bimage.clipsToBounds = true
+        spin.addSubview(bimage)
+        bimage.contentMode = .ScaleAspectFit
+        spin.startAnimating()
+        let lineViewTwo = LineView(frame: view.frame)
+        view.addSubview(lineViewTwo)
+
+        apodNetwork.getTodayInfo { [weak self] x in
             dispatch_async(dispatch_get_main_queue(), {
                     print(x)
-                self.updateUI(x)
+                self?.spin.stopAnimating()
+                lineViewTwo.fadeOut({ _ in
+                    lineViewTwo.removeFromSuperview()
+                })
+                self?.updateUI(x)
             })
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func updateUI(x:Today){
-        //FIXME: use a whole dataset for none URLsession
-        //self.todayImageViewOutlet.image = UIImage(data: try! Data(contentsOf: url)) "http://apod.nasa.gov/apod/image/1610/EagleNebula_Hendren_960.jpg"
 
-        let imageData = NSData(contentsOfURL: NSURL(string:x.url)!)
+    func updateUI(x:Today){
         todayTitle.text = x.title
         descriptionText.text = x.explanation
-        //todayDate.text = x.date
-        //copyright.text = x.copyright
-        //todayImageView.image  = UIImage(named: "x.png")
-        todayImageView.image = UIImage(data: imageData!)
+        let xImage = NSURL(string: x.url)
+            .flatMap{ NSData(contentsOfURL: $0)}
+            .flatMap{UIImage(data: $0)}
+        todayImageView.image = xImage ?? UIImage(named: "x.png")
     }
+    
     @IBAction func shareButton(sender: UIButton) {
         print ("button share called")
         if let shareImage = UIImage(named: "x.png"){
             let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
-            self.presentViewController(vc, animated: true, completion: nil)
+            self.presentViewController(vc, animated: true, completion: {
+                self.scrollView.backToOrigin()
+            })
         }
     }
     @IBAction func saveButton(sender: UIButton) {
-        let testImage = UIImage(named: "x.png")
+        let testImage = todayImageView.image 
         //_:String = "Camera Roll"
         //let options:PHFetchOptions = PHFetchOptions()
         //options.predicate = NSPredicate(format: "title = %@","Camera Roll")
@@ -68,5 +84,13 @@ class ApodViewController: UIViewController {
                             print("added image to album\(success)")
                             if !success { print("error creating asset: \(error)")}
                     })
+        scrollView.backToOrigin()
+    }
+}
+extension UIScrollView {
+    func backToOrigin() {
+        var bounds = self.bounds
+        bounds.origin = CGPoint(x: 0, y: 0)
+        self.setContentOffset(bounds.origin, animated: true)
     }
 }

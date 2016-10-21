@@ -26,12 +26,15 @@ class LineView: UIView, Shapeble, CanBlink{
         // WHY protocols can not store or contain storage ?
         //FIXME: figure out why the struc has to be called after the previous methods.
         drawPathElements()
+        configerTimer()
+
     }
     //MARK: drawElements
     func drawPathElements(){
         testPath = creatSimpleShapeReturn(faceCenter, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI/3), clockwise: false, lineWidth: 1.0, pathColor: UIColor.whiteColor())
         outterRing = creatSimpleShapeReturn(faceCenter, radius: faceRadius, startAngle: CGFloat(M_PI/3), endAngle: CGFloat(2*M_PI), clockwise: true, lineWidth: 0.2, pathColor: UIColor.whiteColor())
-        mathPath = MathVizPath(center: faceCenter).pathMV
+        print(timeSequence)
+        //mathPath = MathVizPath(center: faceCenter, motion: Float(timeSequence)).pathMV
         drawRadialGradient()
     }
     func drawRadialGradient(){
@@ -44,19 +47,20 @@ class LineView: UIView, Shapeble, CanBlink{
     }
     //MARK: touch event
     var isMiddleLocationTapped = false
-    var isMathDrawingTapped = false
+    var isMathDrawingTapped = true
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touchPoint = touches.first {
             let touchLocation = touchPoint.locationInView(self)  //touchPoint.location(in: self)
             isMiddleLocationTapped = testPath.containsPoint(touchLocation)//testPath.contains(touchLocation)
             if isMiddleLocationTapped == true {
+                timer.invalidate()
                 configerTimer()
                 blink(testPath, blinkColor: UIColor.yellowColor())
             }
-            isMathDrawingTapped = mathPath.containsPoint(touchLocation)
-            if isMathDrawingTapped == true {
-                //blinkStock(mathPath)
-            }
+//            isMathDrawingTapped = mathPath.containsPoint(touchLocation)
+//            if isMathDrawingTapped == true {
+//                //blinkStock(mathPath)
+//            }
             print(touchLocation)
         }
     }
@@ -82,6 +86,7 @@ class LineView: UIView, Shapeble, CanBlink{
         if timeSequence == 3 {
             timeSequence = 0.01
         }
+        
         let r = Double(faceRadius) * cos(timeSineValue) * sin(timeSequence)
         let tempT = CGFloat(r)
         let testPath = UIBezierPath(arcCenter: faceCenter, radius: tempT, startAngle: CGFloat(M_PI), endAngle: CGFloat(M_PI/3), clockwise: false)
@@ -95,5 +100,20 @@ class LineView: UIView, Shapeble, CanBlink{
         dot.backgroundColor = UIColor.yellowColor()
         self.addSubview(dot)
         dot.layer.addAnimation(animation, forKey: nil)
+    }
+}
+//UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+//    self.alpha = 1.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
+//    }, completion: nil)
+
+extension UIView {
+    func fadeOut(completion:Bool -> ()){
+        UIView.animateWithDuration(5.5, animations: {
+            self.alpha = 0.0 }) { _ in
+                completion(true)
+        }
+//        UIView.animateWithDuration(9.5,) {
+//            self.alpha = 0.0
+//        },
     }
 }

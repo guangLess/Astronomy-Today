@@ -28,6 +28,22 @@ class ApodNetwork: NetworkController {
         let request = NSURLRequest(URL:NSURL(string:urlString)!)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
+            
+            print(response)
+            
+            //var errorOptional : NSError?
+            //let jsonOptional = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: errorOptional)
+
+            /*
+             var jsonErrorOptional: NSError?
+             let jsonOptional: JSON! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
+             
+             // if there was an error parsing the JSON send it back
+             if let err = jsonErrorOptional {
+             callback(.Error(err))
+             return
+             }
+             */
             if let data = data{
                 let response = NSString(data: data, encoding: NSUTF8StringEncoding)
                 print(response)
@@ -44,10 +60,11 @@ class ApodNetwork: NetworkController {
                     completion(today)
                 }catch {
                     print("Error with Json: \(error)")
+                    let defalutData = Today.init(date: "", explanation: "There is a connection issue", media_type: "", title: "", url: "x.png", copyright: "")
+                    completion(defalutData)
                 }
             }
         }
         task.resume()
     }
 }
-
