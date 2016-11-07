@@ -12,8 +12,10 @@
 		622498AC1DB97C8E00B6D459 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 622498AB1DB97C8E00B6D459 /* 3.jpg */; };
 		622498AE1DB9AE3000B6D459 /* background-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498AD1DB9AE3000B6D459 /* background-moon-dark.png */; };
 		622498B01DB9AE5E00B6D459 /* PM2-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */; };
-		622498B21DB9AE9300B6D459 /* PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498B11DB9AE9300B6D459 /* PM.png */; };
-		627564841DA55A8C001E624F /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 627564831DA55A8C001E624F /* x.png */; };
+		622498B21DB9AE9300B6D459 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498B11DB9AE9300B6D459 /* x.png */; };
+		622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622498B41DBFEDDB00B6D459 /* WebService.swift */; };
+		62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 62734BA21DCEBBD200634F2D /* half-moon-dark.png */; };
+		62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDC1E81DCBC92200A9E905 /* DrawButton.swift */; };
 		62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D081DA2B82D00353999 /* AppDelegate.swift */; };
 		62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D0A1DA2B82D00353999 /* ViewController.swift */; };
 		62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D0C1DA2B82D00353999 /* Main.storyboard */; };
@@ -65,8 +67,10 @@
 		622498AB1DB97C8E00B6D459 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		622498AD1DB9AE3000B6D459 /* background-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-moon-dark.png"; sourceTree = "<group>"; };
 		622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PM2-icon.jpg"; sourceTree = "<group>"; };
-		622498B11DB9AE9300B6D459 /* PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PM.png; sourceTree = "<group>"; };
-		627564831DA55A8C001E624F /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		622498B11DB9AE9300B6D459 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		622498B41DBFEDDB00B6D459 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		62734BA21DCEBBD200634F2D /* half-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon-dark.png"; sourceTree = "<group>"; };
+		62CDC1E81DCBC92200A9E905 /* DrawButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawButton.swift; sourceTree = "<group>"; };
 		62F06D051DA2B82D00353999 /* APOD.swift2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.swift2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F06D081DA2B82D00353999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F06D0A1DA2B82D00353999 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,9 +124,9 @@
 				622498AD1DB9AE3000B6D459 /* background-moon-dark.png */,
 				622498A71DB96B2E00B6D459 /* n.png */,
 				622498AB1DB97C8E00B6D459 /* 3.jpg */,
-				627564831DA55A8C001E624F /* x.png */,
-				622498B11DB9AE9300B6D459 /* PM.png */,
+				622498B11DB9AE9300B6D459 /* x.png */,
 				622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */,
+				62734BA21DCEBBD200634F2D /* half-moon-dark.png */,
 			);
 			name = images;
 			path = APOD.swift2.3;
@@ -184,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				62F06D3E1DA3829D00353999 /* Network.swift */,
+				622498B41DBFEDDB00B6D459 /* WebService.swift */,
 				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				622498A51DB91AEA00B6D459 /* AboutViewController.swift */,
@@ -196,6 +201,7 @@
 			children = (
 				62F06D381DA2BD3700353999 /* PathExtention.swift */,
 				62F06D361DA2BBDA00353999 /* LineView.swift */,
+				62CDC1E81DCBC92200A9E905 /* DrawButton.swift */,
 				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
 				62F06D0A1DA2B82D00353999 /* ViewController.swift */,
 			);
@@ -309,13 +315,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				622498AE1DB9AE3000B6D459 /* background-moon-dark.png in Resources */,
-				622498B21DB9AE9300B6D459 /* PM.png in Resources */,
+				62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */,
+				622498B21DB9AE9300B6D459 /* x.png in Resources */,
 				622498B01DB9AE5E00B6D459 /* PM2-icon.jpg in Resources */,
 				62F06D131DA2B82D00353999 /* LaunchScreen.storyboard in Resources */,
 				62F06D101DA2B82D00353999 /* Assets.xcassets in Resources */,
 				622498A81DB96B2E00B6D459 /* n.png in Resources */,
 				622498AC1DB97C8E00B6D459 /* 3.jpg in Resources */,
-				627564841DA55A8C001E624F /* x.png in Resources */,
 				62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +355,8 @@
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
 				62F06D3F1DA3829D00353999 /* Network.swift in Sources */,
 				62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */,
+				62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */,
+				622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */,
 				62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +510,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apod.art;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -514,6 +523,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apod.art;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

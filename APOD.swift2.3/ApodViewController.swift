@@ -6,58 +6,145 @@
 import UIKit
 import Photos
 
-class ApodViewController: UIViewController {
-    lazy var apodNetwork: NetworkController = ApodNetwork()
+
+
+let sharedWebservice = Webservice()
+
+
+protocol Loading {
+    var lineViewTwo : LineView {get}
+    func configure(value: Day)
+    
+}
+extension Loading where Self: UIViewController {
+    
+    func load(resource: Resource)  {
+        lineViewTwo.frame = self.view.frame
+        self.view.addSubview(lineViewTwo)
+        sharedWebservice.load(Day.all) { [weak self] result in
+            print("-------------------\(result)")
+            dispatch_async(dispatch_get_main_queue(), {
+                if result != nil {
+                    self?.lineViewTwo.fadeOut({ _ in
+                        self?.lineViewTwo.removeFromSuperview()
+                    })
+                    guard let todayData = result else {return}
+                    self?.configure(todayData)
+                }
+            })
+        }
+    }
+}
+
+
+
+
+
+
+final class ApodViewController: UIViewController,Loading {
+    //lazy var apodNetwork: NetworkController = ApodNetwork()
     @IBOutlet weak var todayTitle: UILabel!
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var todayImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var spin: UIActivityIndicatorView!
+    @IBOutlet weak var aboutMeButton: UIButton!
     
+    /*
+     let url = NSURL(string: "http://localhost:8000/episode.json")!
+     let episodeResource = Resource<Episode>(url: url, parseJSON: { anyObject in
+     (anyObject as? JSONDictionary).flatMap(Episode.init)
+     })
+     
+     */
+    
+    
+    var lineViewTwo = LineView()
+    convenience init (resource: Resource) {
+        self.init()
+        load(resource)
+    }
+    
+    func configure(value: Day) {
+        todayTitle.text = value.title
+        todayTitle.sizeToFit()
+        descriptionText.text = value.explanation
+        showMedia(value.media_type, itsUrl: value.url)
+    }
+
+    let defaultImage = UIImage(named: "x.png")
+    //var todayData = Day(dictionary: [:])
     override func viewDidLoad() {
         super.viewDidLoad()
-        //spin.addSubview(UIImageView(image: UIImage(named: "x.png")).contentMode.rawValue = 1)
-        let bimage = UIImageView(image: UIImage(named: "PM.jpg"))
-        let or = spin.frame.origin
-//        spin.transform = CGAffineTransformMakeScale(0.5, 0.5)
-//        let size = spin.bounds.size
-
-        bimage.frame = CGRect(origin: or, size: CGSize(width: 100, height: 100))
-        bimage.clipsToBounds = true
-        spin.addSubview(bimage)
-        bimage.contentMode = .ScaleAspectFit
-        spin.startAnimating()
-        let lineViewTwo = LineView(frame: view.frame)
+        
+        /*let lineViewTwo = LineView(frame: view.frame)
         view.addSubview(lineViewTwo)
-
-        apodNetwork.getTodayInfo { [weak self] x in
-            dispatch_async(dispatch_get_main_queue(), {
-                    print(x)
-                self?.spin.stopAnimating()
-                lineViewTwo.fadeOut({ _ in
-                    lineViewTwo.removeFromSuperview()
-                })
-                self?.updateUI(x)
+        
+        Webservice().load(Day.all) { result in
+            print("-------------------\(result)")
+            dispatch_async(dispatch_get_main_queue(), { 
+                if let todayData = result {
+                    lineViewTwo.fadeOut({ _ in
+                        lineViewTwo.removeFromSuperview()
+                    })
+                    self.updateUI(todayData)
+                }
             })
-        }
+        }*/
     }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(true)
+//        //aboutMeButton.setNeedsDisplay()
+//        //aboutMeButton.awakeFromNib()
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    func updateUI(x:Today){
+    /*func updateUI(x:Day){
         todayTitle.text = x.title
+        todayTitle.sizeToFit()
         descriptionText.text = x.explanation
-        let xImage = NSURL(string: x.url)
-            .flatMap{ NSData(contentsOfURL: $0)}
-            .flatMap{UIImage(data: $0)}
-        todayImageView.image = xImage ?? UIImage(named: "x.png")
+        showMedia(x.media_type, itsUrl: x.url)
+        // show media type
+    }*/
+    
+
+    
+    func showMedia(media:String, itsUrl: String) {
+
+        let todayContent = CreateContent.init(/*url: x.url,*/ parseMedia: {u in
+            let xImage = NSURL(string:u)
+                .flatMap{ NSData(contentsOfURL: $0)}
+                .flatMap{UIImage(data: $0)}
+            let xURL = NSURL(string: u)
+            return Content(image: xImage, videoLink: xURL)
+        })
+        
+        let parseResult = todayContent.parse(itsUrl)
+        print(parseResult)
+        
+        if (media == "video") {
+            let videoView = UIWebView()
+            videoView.frame = mediaView.bounds
+            videoView.backgroundColor = UIColor.clearColor()
+            self.mediaView.addSubview(videoView)
+            //            guard let videoURL = NSURL(string: x.url)
+            //                else {return}
+            videoView.loadRequest(NSURLRequest(URL:(parseResult?.videoLink)!))
+        } else {
+            //            let xImage = NSURL(string: x.url)
+            //                .flatMap{ NSData(contentsOfURL: $0)}
+            //                .flatMap{UIImage(data: $0)}
+            //            todayImageView.image = xImage ?? defaultImage
+            todayImageView.image = parseResult?.image
+            //FIXME:change it to a switch
+        }
     }
     
     @IBAction func shareButton(sender: UIButton) {
         print ("button share called")
-        if let shareImage = UIImage(named: "x.png"){
+        if let shareImage = todayImageView.image{
             let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
             self.presentViewController(vc, animated: true, completion: {
                 self.scrollView.backToOrigin()
@@ -94,3 +181,75 @@ extension UIScrollView {
         self.setContentOffset(bounds.origin, animated: true)
     }
 }
+
+//struct Media {
+//    let videoURL : NSString -> NSURL?
+//    let imageURL: NSString -> UIImage?
+//}
+//
+//extension Media {
+//    
+//    init(videoURL: NSString, image: NSString -> UIImage?){
+//        self.videoURL = { x in
+//                return NSURL(string: x as String)
+//        }
+//         self.imageURL = { x in
+//            let xImage = NSURL(string: x as String)
+//                .flatMap{ NSData(contentsOfURL: $0)}
+//                .flatMap{UIImage(data: $0)}
+//            return xImage
+//        }
+//    }
+//}
+
+//struct MediaType<A> {
+//    
+//    let mediaType : String
+//    
+//    func processMedia<M>() -> Content {
+//        switch mediaType {
+//        case "image":
+//            let xImage = NSURL(string:mediaType)
+//                .flatMap{ NSData(contentsOfURL: $0)}
+//                .flatMap{UIImage(data: $0)}
+//            return xImage
+//        default:
+//            
+//        }
+//    }
+//}
+
+struct Content {
+    let image: UIImage?
+    let videoLink: NSURL?
+}
+
+struct CreateContent {
+    //let url: String
+    let parse: String -> Content?
+}
+extension CreateContent {
+    init(/*url:String,*/parseMedia: String -> Content?){
+        self.parse = parseMedia
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@
 //  Created by Guang on 10/4/16.
 //  Copyright © 2016 Guang. All rights reserved.
 //
-
+/*
 import Foundation
 
 struct Today {
@@ -68,3 +68,4 @@ class ApodNetwork: NetworkController {
         task.resume()
     }
 }
+*/

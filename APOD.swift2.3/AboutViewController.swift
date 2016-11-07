@@ -21,6 +21,8 @@ class AboutViewController: UIViewController {
         //aboutText.text = text
         //aboutMe.text = aboutMeText
         aboutText.text = contet.init().text
+        aboutText.maximumZoomScale = 1
+        aboutText.minimumZoomScale = 0.7
         aboutMe.text = contet.init().aboutMeText
     }
 
@@ -30,16 +32,11 @@ class AboutViewController: UIViewController {
     }
 
     @IBAction func back(sender: AnyObject) {
-            //add animation
-        
         UIView.animateWithDuration(2, animations: { 
             self.view.alpha = 0.0
             }) { _ in
-                //self.removeFromParentViewController()
-                //self.navigationController?.popViewControllerAnimated(false)
                 self.dismissViewControllerAnimated(false, completion: nil)
         }
-            //self.view.alpha = 0.0
     }
 }
 

@@ -31,6 +31,7 @@ extension CanBlink where Self: UIView {
         let blinkAnimation = CAKeyframeAnimation(keyPath: "opacity")
         blinkAnimation.values = [0.0, 1.0,1.0,1.0,1.0,1.0,0.0]
         blinkAnimation.duration = 1
+        
         blinkPathLayer.addAnimation(blinkAnimation, forKey: "blinkAnimation")
     }
     //thickness

@@ -86,14 +86,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="O49-uH-lZs">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="2db-za-VCb"/>
-                                    <constraint firstAttribute="height" constant="150" id="Whl-mw-Dff"/>
-                                </constraints>
-                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwa-MU-blA">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -124,12 +116,12 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6i-UU-grR">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6i-UU-grR">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="M6i-UU-grR" secondAttribute="height" multiplier="1:1" id="IJ5-qF-OXB"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                                 <state key="normal" title="save">
                                                     <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -137,12 +129,12 @@
                                                     <action selector="saveButton:" destination="R9L-h8-BOg" eventType="touchUpInside" id="F8G-mm-Gr2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgU-sP-nn8">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgU-sP-nn8">
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xgU-sP-nn8" secondAttribute="height" multiplier="1:1" id="9FI-Qr-PCW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                                 <state key="normal" title="share">
                                                     <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -189,22 +181,21 @@
                                     </mask>
                                 </variation>
                             </scrollView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-Wx-cew">
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-Wx-cew">
+                                <frame key="frameInset" minX="299" minY="389" width="76" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="5DI-Vb-7A4"/>
                                     <constraint firstAttribute="height" constant="49" id="W70-m8-DjE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <state key="normal" title="🐳"/>
+                                <state key="normal" image="half-moon-dark.png"/>
                                 <connections>
                                     <segue destination="Fi4-JA-8Rg" kind="presentation" modalTransitionStyle="crossDissolve" id="ZHE-2r-Pkw"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2397411616" green="0.2397411616" blue="0.2397411616" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nwx-O7-mxp" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="0.94" id="2vU-IZ-iDX"/>
-                            <constraint firstItem="O49-uH-lZs" firstAttribute="centerY" secondItem="UzQ-Bo-HQ5" secondAttribute="centerY" id="2xt-S0-mui"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="centerX" secondItem="UzQ-Bo-HQ5" secondAttribute="centerX" id="3FI-7i-vpb"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="top" secondItem="vjb-gB-Es9" secondAttribute="bottom" constant="10" id="Cdq-1s-kEz"/>
                             <constraint firstItem="vjb-gB-Es9" firstAttribute="leading" secondItem="UzQ-Bo-HQ5" secondAttribute="leading" id="FVV-Ja-aiW"/>
@@ -213,7 +204,6 @@
                             <constraint firstAttribute="trailing" secondItem="fKR-xL-8Zn" secondAttribute="trailing" id="auX-Pd-wVn"/>
                             <constraint firstItem="vjb-gB-Es9" firstAttribute="top" secondItem="UzQ-Bo-HQ5" secondAttribute="top" id="fT1-VH-KXy"/>
                             <constraint firstItem="fKR-xL-8Zn" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="1.5" id="g9F-18-PYb"/>
-                            <constraint firstItem="O49-uH-lZs" firstAttribute="centerX" secondItem="UzQ-Bo-HQ5" secondAttribute="centerX" id="glT-Gu-3SY"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" id="hgn-Yb-9yR"/>
                             <constraint firstItem="fKR-xL-8Zn" firstAttribute="leading" secondItem="UzQ-Bo-HQ5" secondAttribute="leading" id="nZE-ne-Bk1"/>
                             <constraint firstItem="Yqi-lY-E8b" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="1.3" id="nmu-qO-mb9"/>
@@ -237,10 +227,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="qCi-6i-gOg"/>
                     <connections>
+                        <outlet property="aboutMeButton" destination="mJC-Wx-cew" id="Vce-kc-j9r"/>
                         <outlet property="descriptionText" destination="nwx-O7-mxp" id="Cee-G2-Nw7"/>
                         <outlet property="mediaView" destination="vjb-gB-Es9" id="SEn-Dc-dk7"/>
                         <outlet property="scrollView" destination="fKR-xL-8Zn" id="Ym5-nN-AP1"/>
-                        <outlet property="spin" destination="O49-uH-lZs" id="g71-bi-1fg"/>
                         <outlet property="todayImageView" destination="H0L-oH-Nf6" id="6e8-Di-VMw"/>
                         <outlet property="todayTitle" destination="fwa-MU-blA" id="3y4-YA-o2W"/>
                     </connections>
@@ -271,18 +261,6 @@
                                     <constraint firstAttribute="width" secondItem="PZb-mU-79l" secondAttribute="height" multiplier="1:1" id="yM4-K0-iIy"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-Tv-xjd">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="BaJ-GI-FGP"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="46" id="Cae-cL-pOp"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="49" id="xEq-xU-Dwt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="🐳"/>
-                                <connections>
-                                    <action selector="back:" destination="Fi4-JA-8Rg" eventType="touchUpInside" id="kxS-ea-Dda"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mb-uY-ww3">
                                 <string key="text">Astronomy Picture of the Day. Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. https://apod.nasa.gov/</string>
                                 <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -297,11 +275,23 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-Tv-xjd">
+                                <frame key="frameInset" minX="16" minY="28" width="81" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="BaJ-GI-FGP"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="46" id="Cae-cL-pOp"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="49" id="xEq-xU-Dwt"/>
+                                </constraints>
+                                <state key="normal" image="half-moon-dark.png"/>
+                                <connections>
+                                    <action selector="back:" destination="Fi4-JA-8Rg" eventType="touchUpInside" id="kxS-ea-Dda"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="853-fa-yvo" firstAttribute="centerX" secondItem="eVv-Pf-Jk6" secondAttribute="centerX" id="0vz-qG-G9p"/>
-                            <constraint firstItem="7mb-uY-ww3" firstAttribute="height" secondItem="PZb-mU-79l" secondAttribute="height" multiplier="0.23" id="2X8-70-ACk"/>
+                            <constraint firstItem="7mb-uY-ww3" firstAttribute="height" secondItem="PZb-mU-79l" secondAttribute="height" multiplier="0.25" id="2X8-70-ACk"/>
                             <constraint firstItem="PZb-mU-79l" firstAttribute="centerX" secondItem="eVv-Pf-Jk6" secondAttribute="centerX" id="55U-hj-D48"/>
                             <constraint firstItem="853-fa-yvo" firstAttribute="height" secondItem="7mb-uY-ww3" secondAttribute="height" id="6SX-5J-A0M"/>
                             <constraint firstItem="fcM-Tv-xjd" firstAttribute="top" secondItem="1BR-AZ-Geh" secondAttribute="bottom" constant="8" id="EMT-FR-y0c"/>
@@ -356,5 +346,6 @@
     </scenes>
     <resources>
         <image name="background-moon-dark.png" width="1726" height="2783"/>
+        <image name="half-moon-dark.png" width="1954" height="1055"/>
     </resources>
 </document>
