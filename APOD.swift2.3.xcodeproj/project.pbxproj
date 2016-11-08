@@ -15,6 +15,7 @@
 		622498B21DB9AE9300B6D459 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498B11DB9AE9300B6D459 /* x.png */; };
 		622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622498B41DBFEDDB00B6D459 /* WebService.swift */; };
 		62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 62734BA21DCEBBD200634F2D /* half-moon-dark.png */; };
+		62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */; };
 		62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDC1E81DCBC92200A9E905 /* DrawButton.swift */; };
 		62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D081DA2B82D00353999 /* AppDelegate.swift */; };
 		62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D0A1DA2B82D00353999 /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		622498B11DB9AE9300B6D459 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		622498B41DBFEDDB00B6D459 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		62734BA21DCEBBD200634F2D /* half-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon-dark.png"; sourceTree = "<group>"; };
+		62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		62CDC1E81DCBC92200A9E905 /* DrawButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawButton.swift; sourceTree = "<group>"; };
 		62F06D051DA2B82D00353999 /* APOD.swift2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.swift2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F06D081DA2B82D00353999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				62F06D3E1DA3829D00353999 /* Network.swift */,
 				622498B41DBFEDDB00B6D459 /* WebService.swift */,
 				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
+				62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				622498A51DB91AEA00B6D459 /* AboutViewController.swift */,
 			);
@@ -353,6 +356,7 @@
 				622498A61DB91AEA00B6D459 /* AboutViewController.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
+				62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */,
 				62F06D3F1DA3829D00353999 /* Network.swift in Sources */,
 				62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */,
 				62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */,

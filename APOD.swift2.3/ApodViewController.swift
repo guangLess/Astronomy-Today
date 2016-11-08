@@ -6,10 +6,11 @@
 import UIKit
 import Photos
 
-
-
+let aurl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
+let dayResource = Resource(url: aurl, parseJSON: { anyObject in
+    (anyObject as? NSDictionary).flatMap(Day.init)
+})
 let sharedWebservice = Webservice()
-
 
 protocol Loading {
     var lineViewTwo : LineView {get}
@@ -17,11 +18,10 @@ protocol Loading {
     
 }
 extension Loading where Self: UIViewController {
-    
     func load(resource: Resource)  {
         lineViewTwo.frame = self.view.frame
         self.view.addSubview(lineViewTwo)
-        sharedWebservice.load(Day.all) { [weak self] result in
+        sharedWebservice.load(resource) { [weak self] result in
             print("-------------------\(result)")
             dispatch_async(dispatch_get_main_queue(), {
                 if result != nil {
@@ -36,13 +36,7 @@ extension Loading where Self: UIViewController {
     }
 }
 
-
-
-
-
-
 final class ApodViewController: UIViewController,Loading {
-    //lazy var apodNetwork: NetworkController = ApodNetwork()
     @IBOutlet weak var todayTitle: UILabel!
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var descriptionText: UITextView!
@@ -50,96 +44,58 @@ final class ApodViewController: UIViewController,Loading {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var aboutMeButton: UIButton!
     
-    /*
-     let url = NSURL(string: "http://localhost:8000/episode.json")!
-     let episodeResource = Resource<Episode>(url: url, parseJSON: { anyObject in
-     (anyObject as? JSONDictionary).flatMap(Episode.init)
-     })
-     
-     */
-    
-    
     var lineViewTwo = LineView()
-    convenience init (resource: Resource) {
+    convenience init(day: Day){
         self.init()
-        load(resource)
+        configure(day)
     }
+    
+//    convenience init (resource: Resource) {
+//        self.init()
+//        load(resource)
+//    }
+
     
     func configure(value: Day) {
         todayTitle.text = value.title
         todayTitle.sizeToFit()
         descriptionText.text = value.explanation
-        showMedia(value.media_type, itsUrl: value.url)
+
+        if let todayMedia = configureMedia(value.url){
+        switch value.media_type {
+        case "image":
+            todayImageView.image = todayMedia.image
+        case "video":
+            let videoView = UIWebView()
+            videoView.frame = mediaView.bounds
+            videoView.backgroundColor = UIColor.clearColor()
+            self.mediaView.addSubview(videoView)
+            videoView.loadRequest(NSURLRequest(URL:todayMedia.videoLink!))//FIXME: fix this
+        default: break
+            }
+        }
     }
 
-    let defaultImage = UIImage(named: "x.png")
-    //var todayData = Day(dictionary: [:])
+    //let defaultImage = UIImage(named: "x.png")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*let lineViewTwo = LineView(frame: view.frame)
-        view.addSubview(lineViewTwo)
-        
-        Webservice().load(Day.all) { result in
-            print("-------------------\(result)")
-            dispatch_async(dispatch_get_main_queue(), { 
-                if let todayData = result {
-                    lineViewTwo.fadeOut({ _ in
-                        lineViewTwo.removeFromSuperview()
-                    })
-                    self.updateUI(todayData)
-                }
-            })
-        }*/
+        load(dayResource)
     }
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(true)
-//        //aboutMeButton.setNeedsDisplay()
-//        //aboutMeButton.awakeFromNib()
-//    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    /*func updateUI(x:Day){
-        todayTitle.text = x.title
-        todayTitle.sizeToFit()
-        descriptionText.text = x.explanation
-        showMedia(x.media_type, itsUrl: x.url)
-        // show media type
-    }*/
     
-
-    
-    func showMedia(media:String, itsUrl: String) {
-
-        let todayContent = CreateContent.init(/*url: x.url,*/ parseMedia: {u in
+    func configureMedia(itsUrl: String) -> Content? {
+        let todayContent = CreateContent.init(parseMedia: {u in
             let xImage = NSURL(string:u)
                 .flatMap{ NSData(contentsOfURL: $0)}
                 .flatMap{UIImage(data: $0)}
             let xURL = NSURL(string: u)
             return Content(image: xImage, videoLink: xURL)
         })
-        
-        let parseResult = todayContent.parse(itsUrl)
-        print(parseResult)
-        
-        if (media == "video") {
-            let videoView = UIWebView()
-            videoView.frame = mediaView.bounds
-            videoView.backgroundColor = UIColor.clearColor()
-            self.mediaView.addSubview(videoView)
-            //            guard let videoURL = NSURL(string: x.url)
-            //                else {return}
-            videoView.loadRequest(NSURLRequest(URL:(parseResult?.videoLink)!))
-        } else {
-            //            let xImage = NSURL(string: x.url)
-            //                .flatMap{ NSData(contentsOfURL: $0)}
-            //                .flatMap{UIImage(data: $0)}
-            //            todayImageView.image = xImage ?? defaultImage
-            todayImageView.image = parseResult?.image
-            //FIXME:change it to a switch
-        }
+        return todayContent.parse(itsUrl)
     }
     
     @IBAction func shareButton(sender: UIButton) {
@@ -182,50 +138,12 @@ extension UIScrollView {
     }
 }
 
-//struct Media {
-//    let videoURL : NSString -> NSURL?
-//    let imageURL: NSString -> UIImage?
-//}
-//
-//extension Media {
-//    
-//    init(videoURL: NSString, image: NSString -> UIImage?){
-//        self.videoURL = { x in
-//                return NSURL(string: x as String)
-//        }
-//         self.imageURL = { x in
-//            let xImage = NSURL(string: x as String)
-//                .flatMap{ NSData(contentsOfURL: $0)}
-//                .flatMap{UIImage(data: $0)}
-//            return xImage
-//        }
-//    }
-//}
-
-//struct MediaType<A> {
-//    
-//    let mediaType : String
-//    
-//    func processMedia<M>() -> Content {
-//        switch mediaType {
-//        case "image":
-//            let xImage = NSURL(string:mediaType)
-//                .flatMap{ NSData(contentsOfURL: $0)}
-//                .flatMap{UIImage(data: $0)}
-//            return xImage
-//        default:
-//            
-//        }
-//    }
-//}
-
 struct Content {
     let image: UIImage?
     let videoLink: NSURL?
 }
 
 struct CreateContent {
-    //let url: String
     let parse: String -> Content?
 }
 extension CreateContent {
@@ -233,23 +151,42 @@ extension CreateContent {
         self.parse = parseMedia
     }
 }
+/*
+final class LoadingViewController: UIViewController {
+    var lineViewTwo = LineView()
 
+    init(resource: Resource, build: Day -> UIViewController) {
+        super.init(nibName: nil, bundle: nil)
+        
+        lineViewTwo.frame = self.view.frame
+        self.view.addSubview(lineViewTwo)
+        sharedWebservice.load(Day.all) { [weak self] result in
+            print("-------------------\(result)")
+            dispatch_async(dispatch_get_main_queue(), {
+                if result != nil {
+                    self?.lineViewTwo.fadeOut({ _ in
+                        self?.lineViewTwo.removeFromSuperview()
+                    })
+                    guard let todayData = result else {return}
+                    let viewController = build(todayData)
+                    self?.add(viewController)
+                }
+            })
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func add(content: UIViewController) {
+        addChildViewController(content)
+        view.addSubview(content.view)
+        content.view.translatesAutoresizingMaskIntoConstraints = false
+        content.view.constrainEdges(toMarginOf: view)
+        content.didMoveToParentViewController(self)
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+*/
 
