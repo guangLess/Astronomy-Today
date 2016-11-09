@@ -47,5 +47,3 @@ extension CanBlink where Self: UIView {
         blinkPathLayer.addAnimation(blinkAnimation, forKey: "blinkAnimation")
     }
 }
-
-

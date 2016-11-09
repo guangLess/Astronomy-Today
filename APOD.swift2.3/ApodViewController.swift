@@ -35,6 +35,7 @@ extension Loading where Self: UIViewController {
         }
     }
 }
+let notificationKey = "back.toVC"
 
 final class ApodViewController: UIViewController,Loading {
     @IBOutlet weak var todayTitle: UILabel!
@@ -43,19 +44,14 @@ final class ApodViewController: UIViewController,Loading {
     @IBOutlet weak var todayImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var aboutMeButton: UIButton!
-    
+    @IBOutlet weak var aboutMeBackImage: UIImageView!
+    var shareVideoLink = NSURL()//FIXME: figure out a different way
     var lineViewTwo = LineView()
     convenience init(day: Day){
         self.init()
         configure(day)
     }
-    
-//    convenience init (resource: Resource) {
-//        self.init()
-//        load(resource)
-//    }
 
-    
     func configure(value: Day) {
         todayTitle.text = value.title
         todayTitle.sizeToFit()
@@ -71,16 +67,26 @@ final class ApodViewController: UIViewController,Loading {
             videoView.backgroundColor = UIColor.clearColor()
             self.mediaView.addSubview(videoView)
             videoView.loadRequest(NSURLRequest(URL:todayMedia.videoLink!))//FIXME: fix this
+            shareVideoLink = todayMedia.videoLink!
         default: break
             }
         }
+        aboutButtonAnimate()
     }
 
-    //let defaultImage = UIImage(named: "x.png")
-
+    func aboutButtonAnimate(){
+        self.aboutMeBackImage.alpha = 0.85
+        UIView.animateWithDuration(2.4, delay: 0, options: [.Repeat, .Autoreverse], animations: {[weak self] _ in
+            self?.aboutMeBackImage.alpha = 0.13
+            }, completion: { _ in
+                //self.aboutMeBackImage.stopAnimating()
+        })
+    }
+    //MARK:
     override func viewDidLoad() {
         super.viewDidLoad()
         load(dayResource)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(aboutButtonAnimate), name: notificationKey, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,10 +104,15 @@ final class ApodViewController: UIViewController,Loading {
         return todayContent.parse(itsUrl)
     }
     
-    @IBAction func shareButton(sender: UIButton) {
+    @IBAction func shareButton(sender: UIButton) {//FIXME: refactor this
         print ("button share called")
         if let shareImage = todayImageView.image{
             let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
+            self.presentViewController(vc, animated: true, completion: {
+                self.scrollView.backToOrigin()
+            })
+        } else {
+            let vc = UIActivityViewController(activityItems:[shareVideoLink], applicationActivities: [])
             self.presentViewController(vc, animated: true, completion: {
                 self.scrollView.backToOrigin()
             })
@@ -137,7 +148,6 @@ extension UIScrollView {
         self.setContentOffset(bounds.origin, animated: true)
     }
 }
-
 struct Content {
     let image: UIImage?
     let videoLink: NSURL?
@@ -151,6 +161,22 @@ extension CreateContent {
         self.parse = parseMedia
     }
 }
+
+/*struct AboutButtonStruct {
+//    func aboutBAnimate(vc:UIView, completion: (Bool)->Void){
+//        vc.alpha = 0.85
+//        UIView.animateWithDuration(3.0, delay: 0, options: [.Repeat, .Autoreverse], animations: { [unowned vc] _ in
+//            vc.alpha = 0.13
+//            }, completion: completion)
+//    }
+    
+    func aboutBAnimate(vc:UIView /*,completion: (Bool)->Void*/){
+        vc.alpha = 0.85
+        UIView.animateWithDuration(3.0, delay: 0, options: [.Repeat, .Autoreverse], animations: { [unowned vc] _ in
+            vc.alpha = 0.13
+            }, completion: nil)
+    }
+}*/
 /*
 final class LoadingViewController: UIViewController {
     var lineViewTwo = LineView()

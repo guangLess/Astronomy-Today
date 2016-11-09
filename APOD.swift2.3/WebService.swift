@@ -58,7 +58,6 @@ extension Resource{
 //    })
 //}
 
-
 final class Webservice {
     func load(resource: Resource, completion: (Day?) -> ()){
         NSURLSession.sharedSession().dataTaskWithURL(resource.url){ data,_,_ in
