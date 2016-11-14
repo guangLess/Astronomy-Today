@@ -1,3 +1,1 @@
-Astronomy Picture of the Day: Each day a different image or photograph of our fascinating universe is featured from NASA, along with a brief explanation written by a professional astronomer.\nhttps://apod.nasa.gov/
-
-About me: I am an artist using code to visualize mathematic equations that I created from the mist of love for math and abstract things.\nhttps://www.guangless.com\nNot affiliated with NASA.
+Astronomy Picture of the Day[App store](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1167779755&mt=8): Each day a different image or photograph of our fascinating universe is featured from NASA, along with a brief explanation written by a professional astronomer.\nhttps://apod.nasa.gov/ This app is not affiliated with NASA.
