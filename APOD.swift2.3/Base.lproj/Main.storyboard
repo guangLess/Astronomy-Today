@@ -176,7 +176,7 @@
                                     </mask>
                                 </variation>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half-moon-dark.png" translatesAutoresizingMaskIntoConstraints="NO" id="X2M-hj-s7P" userLabel="AboutMeImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half-moon.png" translatesAutoresizingMaskIntoConstraints="NO" id="X2M-hj-s7P" userLabel="AboutMeImage">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-Wx-cew">
@@ -185,6 +185,7 @@
                                     <constraint firstAttribute="width" constant="60" id="5DI-Vb-7A4"/>
                                     <constraint firstAttribute="height" constant="60" id="W70-m8-DjE"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <connections>
                                     <segue destination="Fi4-JA-8Rg" kind="presentation" modalTransitionStyle="crossDissolve" id="ZHE-2r-Pkw"/>
                                 </connections>
@@ -192,21 +193,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="mJC-Wx-cew" firstAttribute="top" secondItem="fwa-MU-blA" secondAttribute="bottom" constant="-40" id="0GM-vK-bg4"/>
+                            <constraint firstItem="mJC-Wx-cew" firstAttribute="top" secondItem="fwa-MU-blA" secondAttribute="top" constant="-9" id="0GM-vK-bg4"/>
                             <constraint firstItem="nwx-O7-mxp" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="0.94" id="2vU-IZ-iDX"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="centerX" secondItem="UzQ-Bo-HQ5" secondAttribute="centerX" id="3FI-7i-vpb"/>
                             <constraint firstItem="X2M-hj-s7P" firstAttribute="centerY" secondItem="mJC-Wx-cew" secondAttribute="centerY" id="Bz7-D9-0jY"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="top" secondItem="vjb-gB-Es9" secondAttribute="bottom" constant="10" id="Cdq-1s-kEz"/>
+                            <constraint firstItem="mJC-Wx-cew" firstAttribute="top" secondItem="vjb-gB-Es9" secondAttribute="bottom" constant="1" id="Dni-zH-LXm"/>
                             <constraint firstItem="vjb-gB-Es9" firstAttribute="leading" secondItem="UzQ-Bo-HQ5" secondAttribute="leading" id="FVV-Ja-aiW"/>
-                            <constraint firstAttribute="trailing" secondItem="mJC-Wx-cew" secondAttribute="trailing" constant="-14" id="NmM-wH-PqU"/>
+                            <constraint firstAttribute="trailing" secondItem="mJC-Wx-cew" secondAttribute="trailing" constant="-1" id="NmM-wH-PqU"/>
                             <constraint firstItem="X2M-hj-s7P" firstAttribute="height" secondItem="mJC-Wx-cew" secondAttribute="height" id="Sot-if-R7F"/>
+                            <constraint firstItem="mJC-Wx-cew" firstAttribute="bottom" secondItem="X2M-hj-s7P" secondAttribute="bottom" id="TzG-bM-CeR"/>
                             <constraint firstItem="X2M-hj-s7P" firstAttribute="width" secondItem="mJC-Wx-cew" secondAttribute="width" id="WmN-6J-Y9k"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fKR-xL-8Zn" secondAttribute="bottom" id="ZjN-Yt-CBy"/>
                             <constraint firstAttribute="trailing" secondItem="fKR-xL-8Zn" secondAttribute="trailing" id="auX-Pd-wVn"/>
+                            <constraint firstItem="mJC-Wx-cew" firstAttribute="top" secondItem="H0L-oH-Nf6" secondAttribute="bottom" constant="1" id="ejM-j8-TgQ"/>
                             <constraint firstItem="vjb-gB-Es9" firstAttribute="top" secondItem="UzQ-Bo-HQ5" secondAttribute="top" id="fT1-VH-KXy"/>
                             <constraint firstItem="fKR-xL-8Zn" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="1.5" id="g9F-18-PYb"/>
                             <constraint firstItem="fwa-MU-blA" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" id="hgn-Yb-9yR"/>
-                            <constraint firstItem="X2M-hj-s7P" firstAttribute="centerX" secondItem="mJC-Wx-cew" secondAttribute="centerX" id="iyZ-fO-W8s"/>
+                            <constraint firstItem="X2M-hj-s7P" firstAttribute="centerX" secondItem="mJC-Wx-cew" secondAttribute="centerX" constant="13" id="iyZ-fO-W8s"/>
                             <constraint firstItem="fKR-xL-8Zn" firstAttribute="leading" secondItem="UzQ-Bo-HQ5" secondAttribute="leading" id="nZE-ne-Bk1"/>
                             <constraint firstItem="Yqi-lY-E8b" firstAttribute="width" secondItem="UzQ-Bo-HQ5" secondAttribute="width" multiplier="1.3" id="nmu-qO-mb9"/>
                             <constraint firstAttribute="trailing" secondItem="vjb-gB-Es9" secondAttribute="trailing" id="pcs-C5-PPI"/>
@@ -219,6 +223,9 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="g9F-18-PYb"/>
+                                <exclude reference="0GM-vK-bg4"/>
+                                <exclude reference="TzG-bM-CeR"/>
+                                <exclude reference="ejM-j8-TgQ"/>
                                 <exclude reference="qet-YM-hld"/>
                             </mask>
                         </variation>
@@ -276,14 +283,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-Tv-xjd">
-                                <frame key="frameInset" minX="16" minY="28" width="81" height="49"/>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-Tv-xjd">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="BaJ-GI-FGP"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="81" id="Cae-cL-pOp"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="half-moon-dark.png"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="47"/>
+                                <state key="normal" title="x"/>
                                 <connections>
                                     <action selector="back:" destination="Fi4-JA-8Rg" eventType="touchUpInside" id="nHP-kK-ZdU"/>
                                 </connections>
@@ -306,7 +313,7 @@
                             <constraint firstItem="853-fa-yvo" firstAttribute="top" secondItem="jF6-yF-jAO" secondAttribute="bottom" constant="157.5" id="CYa-7n-icW"/>
                             <constraint firstItem="fcM-Tv-xjd" firstAttribute="top" secondItem="1BR-AZ-Geh" secondAttribute="bottom" constant="8" id="EMT-FR-y0c"/>
                             <constraint firstItem="853-fa-yvo" firstAttribute="width" secondItem="7mb-uY-ww3" secondAttribute="width" id="Lat-JJ-c5n"/>
-                            <constraint firstItem="7mb-uY-ww3" firstAttribute="top" secondItem="fcM-Tv-xjd" secondAttribute="bottom" constant="-2" id="QZa-aY-Il0"/>
+                            <constraint firstItem="7mb-uY-ww3" firstAttribute="top" secondItem="fcM-Tv-xjd" secondAttribute="bottom" constant="3" id="QZa-aY-Il0"/>
                             <constraint firstItem="853-fa-yvo" firstAttribute="top" secondItem="7mb-uY-ww3" secondAttribute="bottom" id="XdH-Rk-NWD"/>
                             <constraint firstItem="fcM-Tv-xjd" firstAttribute="leading" secondItem="eVv-Pf-Jk6" secondAttribute="leadingMargin" id="XeL-40-bUz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jF6-yF-jAO" secondAttribute="trailing" constant="142" id="XtJ-Cu-wdu"/>
@@ -351,6 +358,6 @@
     </scenes>
     <resources>
         <image name="background-moon-dark.png" width="1726" height="2783"/>
-        <image name="half-moon-dark.png" width="1954" height="1055"/>
+        <image name="half-moon.png" width="383" height="700"/>
     </resources>
 </document>

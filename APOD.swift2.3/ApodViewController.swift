@@ -75,9 +75,9 @@ final class ApodViewController: UIViewController,Loading {
     }
 
     func aboutButtonAnimate(){
-        self.aboutMeBackImage.alpha = 0.85
+        self.aboutMeBackImage.alpha = 1.0
         UIView.animateWithDuration(2.4, delay: 0, options: [.Repeat, .Autoreverse], animations: {[weak self] _ in
-            self?.aboutMeBackImage.alpha = 0.13
+            self?.aboutMeBackImage.alpha = 0.05
             }, completion: { _ in
                 //self.aboutMeBackImage.stopAnimating()
         })
