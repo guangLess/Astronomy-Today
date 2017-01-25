@@ -7,6 +7,7 @@ import UIKit
 import Photos
 
 let aurl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
+//FIXME: no need to cast type it is all Strings
 let dayResource = Resource(url: aurl, parseJSON: { anyObject in
     (anyObject as? NSDictionary).flatMap(Day.init)
 })
@@ -15,8 +16,8 @@ let sharedWebservice = Webservice()
 protocol Loading {
     var lineViewTwo : LineView {get}
     func configure(value: Day)
-    
 }
+
 extension Loading where Self: UIViewController {
     func load(resource: Resource)  {
         lineViewTwo.frame = self.view.frame

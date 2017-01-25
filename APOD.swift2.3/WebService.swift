@@ -15,6 +15,7 @@ struct Day{
     let title: String
     let url: String
 }
+//FIXME: Change it to Dictionary. No need to cast String
 extension Day {
     init?(dictionary: NSDictionary) {
         guard let date = dictionary["date"] as? String,
@@ -49,14 +50,6 @@ extension Resource{
         }
     }
 }
-//let apodUrl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
-//extension Day {
-//    static let all = Resource(url: apodUrl, parseJSON: { json in
-//        guard let dictionary = json as? NSDictionary else {return nil}
-//        let day = Day.init(dictionary:dictionary)
-//        return day
-//    })
-//}
 
 final class Webservice {
     func load(resource: Resource, completion: (Day?) -> ()){
@@ -71,16 +64,6 @@ final class Webservice {
         }.resume()
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

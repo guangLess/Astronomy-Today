@@ -14,12 +14,12 @@
 		622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622498B41DBFEDDB00B6D459 /* WebService.swift */; };
 		62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 62734BA21DCEBBD200634F2D /* half-moon-dark.png */; };
 		62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */; };
+		62AB5E601E39474600E8678C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB5E5F1E39474600E8678C /* ViewModel.swift */; };
 		62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDC1E81DCBC92200A9E905 /* DrawButton.swift */; };
 		62D8A9BE1DD2D7840010AD04 /* AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9BD1DD2D7840010AD04 /* AM.png */; };
 		62D8A9C01DD62D7E0010AD04 /* half-moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9BF1DD62D7E0010AD04 /* half-moon.png */; };
 		62D8A9C21DD62D880010AD04 /* full-moon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9C11DD62D880010AD04 /* full-moon_small.png */; };
 		62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D081DA2B82D00353999 /* AppDelegate.swift */; };
-		62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D0A1DA2B82D00353999 /* ViewController.swift */; };
 		62F06D0E1DA2B82D00353999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D0C1DA2B82D00353999 /* Main.storyboard */; };
 		62F06D101DA2B82D00353999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D0F1DA2B82D00353999 /* Assets.xcassets */; };
 		62F06D131DA2B82D00353999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F06D111DA2B82D00353999 /* LaunchScreen.storyboard */; };
@@ -70,13 +70,13 @@
 		622498B41DBFEDDB00B6D459 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		62734BA21DCEBBD200634F2D /* half-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon-dark.png"; sourceTree = "<group>"; };
 		62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		62AB5E5F1E39474600E8678C /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		62CDC1E81DCBC92200A9E905 /* DrawButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawButton.swift; sourceTree = "<group>"; };
 		62D8A9BD1DD2D7840010AD04 /* AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AM.png; sourceTree = "<group>"; };
 		62D8A9BF1DD62D7E0010AD04 /* half-moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon.png"; sourceTree = "<group>"; };
 		62D8A9C11DD62D880010AD04 /* full-moon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-moon_small.png"; sourceTree = "<group>"; };
 		62F06D051DA2B82D00353999 /* APOD.swift2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.swift2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F06D081DA2B82D00353999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		62F06D0A1DA2B82D00353999 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		62F06D0D1DA2B82D00353999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		62F06D0F1DA2B82D00353999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62F06D121DA2B82D00353999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -194,6 +194,7 @@
 				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
 				62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */,
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
+				62AB5E5F1E39474600E8678C /* ViewModel.swift */,
 				622498A51DB91AEA00B6D459 /* AboutViewController.swift */,
 			);
 			name = APOD;
@@ -206,7 +207,6 @@
 				62F06D361DA2BBDA00353999 /* LineView.swift */,
 				62CDC1E81DCBC92200A9E905 /* DrawButton.swift */,
 				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
-				62F06D0A1DA2B82D00353999 /* ViewController.swift */,
 			);
 			name = MathDrawing;
 			sourceTree = "<group>";
@@ -351,10 +351,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62F06D0B1DA2B82D00353999 /* ViewController.swift in Sources */,
 				62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */,
 				62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */,
 				622498A61DB91AEA00B6D459 /* AboutViewController.swift in Sources */,
+				62AB5E601E39474600E8678C /* ViewModel.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
 				62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */,
