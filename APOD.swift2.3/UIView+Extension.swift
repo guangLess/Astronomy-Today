@@ -15,7 +15,6 @@ extension UIView {
             ]
         )
     }
-    
     public func constrainEdges(toMarginOf view: UIView) {
         constrainEqual(.Top, to: view, .TopMargin)
         constrainEqual(.Leading, to: view, .LeadingMargin)

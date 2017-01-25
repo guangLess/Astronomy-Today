@@ -5,7 +5,7 @@
 //  Created by Guang on 11/3/16.
 //  Copyright © 2016 Guang. All rights reserved.
 //
-
+/*
 import UIKit
 import Foundation
 
@@ -52,3 +52,4 @@ class DrawButton: UIButton, Shapeble, CanBlink{
     }
         
 }
+*/

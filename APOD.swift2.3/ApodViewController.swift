@@ -75,11 +75,10 @@ final class ApodViewController: UIViewController,Loading {
     }
 
     func aboutButtonAnimate(){
-        self.aboutMeBackImage.alpha = 1.0
+        self.aboutMeBackImage.alpha = 0.05
         UIView.animateWithDuration(2.4, delay: 0, options: [.Repeat, .Autoreverse], animations: {[weak self] _ in
-            self?.aboutMeBackImage.alpha = 0.05
+            self?.aboutMeBackImage.alpha = 1.0
             }, completion: { _ in
-                //self.aboutMeBackImage.stopAnimating()
         })
     }
     //MARK:
@@ -110,31 +109,24 @@ final class ApodViewController: UIViewController,Loading {
             let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
             self.presentViewController(vc, animated: true, completion: {
                 self.scrollView.backToOrigin()
+                self.aboutButtonAnimate()
             })
+
         } else {
             let vc = UIActivityViewController(activityItems:[shareVideoLink], applicationActivities: [])
             self.presentViewController(vc, animated: true, completion: {
                 self.scrollView.backToOrigin()
+                self.aboutButtonAnimate()
             })
         }
+        //aboutButtonAnimate
     }
+    
     @IBAction func saveButton(sender: UIButton) {
-        let testImage = todayImageView.image 
-        //_:String = "Camera Roll"
-        //let options:PHFetchOptions = PHFetchOptions()
-        //options.predicate = NSPredicate(format: "title = %@","Camera Roll")
-        //let userAlbums = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .SmartAlbumUserLibrary, options: nil)
-        //let collection = userAlbums.firstObject as! PHAssetCollection
-        //print(collection)
+        let testImage = todayImageView.image
                     PHPhotoLibrary.sharedPhotoLibrary().performChanges({
                         PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
-                       /*
-                        let assetPlaceholder = assetRequest.placeholderForCreatedAsset
-                        let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: collection)
-                        albumChangeRequest!.addAssets([assetPlaceholder!] as NSArray)
-                        print(assetPlaceholder?.localIdentifier)
- */
-                        }, completionHandler: { success, error in
+                     }, completionHandler: { success, error in
                             print("added image to album\(success)")
                             if !success { print("error creating asset: \(error)")}
                     })
@@ -161,58 +153,4 @@ extension CreateContent {
         self.parse = parseMedia
     }
 }
-
-/*struct AboutButtonStruct {
-//    func aboutBAnimate(vc:UIView, completion: (Bool)->Void){
-//        vc.alpha = 0.85
-//        UIView.animateWithDuration(3.0, delay: 0, options: [.Repeat, .Autoreverse], animations: { [unowned vc] _ in
-//            vc.alpha = 0.13
-//            }, completion: completion)
-//    }
-    
-    func aboutBAnimate(vc:UIView /*,completion: (Bool)->Void*/){
-        vc.alpha = 0.85
-        UIView.animateWithDuration(3.0, delay: 0, options: [.Repeat, .Autoreverse], animations: { [unowned vc] _ in
-            vc.alpha = 0.13
-            }, completion: nil)
-    }
-}*/
-/*
-final class LoadingViewController: UIViewController {
-    var lineViewTwo = LineView()
-
-    init(resource: Resource, build: Day -> UIViewController) {
-        super.init(nibName: nil, bundle: nil)
-        
-        lineViewTwo.frame = self.view.frame
-        self.view.addSubview(lineViewTwo)
-        sharedWebservice.load(Day.all) { [weak self] result in
-            print("-------------------\(result)")
-            dispatch_async(dispatch_get_main_queue(), {
-                if result != nil {
-                    self?.lineViewTwo.fadeOut({ _ in
-                        self?.lineViewTwo.removeFromSuperview()
-                    })
-                    guard let todayData = result else {return}
-                    let viewController = build(todayData)
-                    self?.add(viewController)
-                }
-            })
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func add(content: UIViewController) {
-        addChildViewController(content)
-        view.addSubview(content.view)
-        content.view.translatesAutoresizingMaskIntoConstraints = false
-        content.view.constrainEdges(toMarginOf: view)
-        content.didMoveToParentViewController(self)
-    }
-
-}
-*/
 
