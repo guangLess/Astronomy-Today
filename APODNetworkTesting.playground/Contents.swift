@@ -17,7 +17,6 @@ extension Day {
             let media_type = dictionary["media_type"],
             let title = dictionary["title"],
             let url = dictionary["url"]
-            //copyright = dictionary["copyright"] as? String
             else{ return nil }
         
         self.date = date
@@ -25,10 +24,42 @@ extension Day {
         self.media_type = media_type
         self.title = title
         self.url = url
-        //self.copyright = copyright
     }
 }
 
+struct Resource<Apod> {
+    let url: URL
+    let parse: (Data) -> Apod?
+}
+/*
+extension Resource{
+    init(url: NSURL, parseJSON:  (AnyObject) -> Day?){
+            self.url = url
 
+    }
+}
+*/
+final class Webservice {
+    func load<Apod>(resource: Resource<Apod>, completion: @escaping (Apod?) -> () ){
+//        URLSession.shared.dataTask(with: resource.url as URL) { data, _, _ in
+//            if let data = data {
+//                completion(resource.parse(data as NSData))
+//            } else {
+//                completion(nil)
+//            }
+//            }.resume()
+        
+        URLSession.shared.dataTask(with: resource.url) { (data, _, _) in
+            if let data = data {
+                completion(resource.parse(data))
+            }
+        }
+    }
+
+}
+
+//let apodResource = Resource<NSData>(url: url, parse: { data in
+//    return data
+//})
 
 
