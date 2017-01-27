@@ -141,6 +141,7 @@ extension UIScrollView {
         self.setContentOffset(bounds.origin, animated: true)
     }
 }
+//FIXME: make it shorter
 struct Content {
     let image: UIImage?
     let videoLink: NSURL?

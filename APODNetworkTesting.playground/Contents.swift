@@ -3,7 +3,7 @@
 import UIKit
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
-
+/*
 typealias apodDict = [String: String]
 struct Day{
     let date: String
@@ -56,7 +56,8 @@ final class Webservice {
 }
 //---------call networks----------------
 struct ApodViewModel {
-    var dayContentCallback: ((_ dayContent: Day) -> Void)?
+    //var dayContentCallback: ((_ dayContent: Day) -> Void)?
+    
     func getDayContent(_ complietion: @escaping (_ dayContent: Day) -> Void){
         //TOFIX: make it into APIKEY file
         let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
@@ -64,6 +65,7 @@ struct ApodViewModel {
             guard let dictionary = json as? apodDict else {return nil}
             return Day.init(dictionary: dictionary)
         })
+
         Webservice().load(resource: apodResource) { day in
             print(day)
             guard let apodDay = day else {fatalError("Can not get webservice content")}
@@ -71,4 +73,31 @@ struct ApodViewModel {
         }
     }
 }
+ */
+//------------Model for media content -------------
+/*
+ var a = Types.Str("hello")
+ a = .Num(1.0)
+
+ switch a {
+ case .Str(let val):
+ print(val)
+ case .Num(let val):
+ print(val)                             // 1.0
+ }
+
+ */
+let media_type = "image"
+let mediaContent = media_type
+switch mediaContent {
+    case "image" :
+    print("x image")
+    case "video" :
+    print("video")
+    default: "other"
+}
+
+let testMedia = mediaContent
+
+
 
