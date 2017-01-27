@@ -1,6 +1,8 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
+import PlaygroundSupport
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 typealias apodDict = [String: String]
 struct Day{
@@ -27,39 +29,40 @@ extension Day {
     }
 }
 
-struct Resource<Apod> {
+struct Resource<A> {
     let url: URL
-    let parse: (Data) -> Apod?
+    let parse: (Data) -> A?
 }
-/*
-extension Resource{
-    init(url: NSURL, parseJSON:  (AnyObject) -> Day?){
-            self.url = url
 
-    }
-}
-*/
-final class Webservice {
-    func load<Apod>(resource: Resource<Apod>, completion: @escaping (Apod?) -> () ){
-//        URLSession.shared.dataTask(with: resource.url as URL) { data, _, _ in
-//            if let data = data {
-//                completion(resource.parse(data as NSData))
-//            } else {
-//                completion(nil)
-//            }
-//            }.resume()
-        
-        URLSession.shared.dataTask(with: resource.url) { (data, _, _) in
-            if let data = data {
-                completion(resource.parse(data))
-            }
+extension Resource{
+    init(url: URL, parseJSON:  @escaping (Any) -> A?){
+            self.url = url
+        self.parse = { data in
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            return json.flatMap(parseJSON)
         }
     }
-
 }
 
-//let apodResource = Resource<NSData>(url: url, parse: { data in
-//    return data
-//})
+let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
+final class Webservice {
+    func load(resource: Resource<Day>, completion: @escaping (Day?) -> () ){
+        URLSession.shared.dataTask(with: resource.url) { (data, _, _) in
+            guard let data = data else
+                {completion(nil)
+                return}
+            completion(resource.parse(data))
+        }.resume()
+    }
+}
+
+let apodResource = Resource<Day>(url: url, parseJSON: { json in
+    guard let dictionary = json as? apodDict else {return nil}
+    return Day.init(dictionary: dictionary)
+})
+
+Webservice().load(resource: apodResource) { result in
+    print(result)
+}
 
 
