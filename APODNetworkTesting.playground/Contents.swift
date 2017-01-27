@@ -44,7 +44,6 @@ extension Resource{
     }
 }
 
-let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
 final class Webservice {
     func load(resource: Resource<Day>, completion: @escaping (Day?) -> () ){
         URLSession.shared.dataTask(with: resource.url) { (data, _, _) in
@@ -55,14 +54,21 @@ final class Webservice {
         }.resume()
     }
 }
-
-let apodResource = Resource<Day>(url: url, parseJSON: { json in
-    guard let dictionary = json as? apodDict else {return nil}
-    return Day.init(dictionary: dictionary)
-})
-
-Webservice().load(resource: apodResource) { result in
-    print(result)
+//---------call networks----------------
+struct ApodViewModel {
+    var dayContentCallback: ((_ dayContent: Day) -> Void)?
+    func getDayContent(_ complietion: @escaping (_ dayContent: Day) -> Void){
+        //TOFIX: make it into APIKEY file
+        let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
+        let apodResource = Resource<Day>(url: url, parseJSON: { json in
+            guard let dictionary = json as? apodDict else {return nil}
+            return Day.init(dictionary: dictionary)
+        })
+        Webservice().load(resource: apodResource) { day in
+            print(day)
+            guard let apodDay = day else {fatalError("Can not get webservice content")}
+                complietion(apodDay)
+        }
+    }
 }
-
 

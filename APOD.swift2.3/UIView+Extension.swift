@@ -5,7 +5,7 @@
 //  Created by Guang on 11/7/16.
 //  Copyright © 2016 Guang. All rights reserved.
 //
-
+/*
 import UIKit
 
 extension UIView {
@@ -22,3 +22,4 @@ extension UIView {
         constrainEqual(.Bottom, to: view, .BottomMargin)
     }
 }
+*/

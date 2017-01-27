@@ -7,25 +7,36 @@
 //
 
 import Foundation
-/*
-class ApodViewModel {
+
+struct Media {
+    let media_type : type
+    //let content:
+}
+
+enum type:String {
+    case image = "image"
+    case video = "video"
+}
+
+struct ApodViewModel {
     /*
      todayTitle: UILabel!
      mediaView: UIView!
      descriptionText: UITextView!
      todayImageView: UIImageView!
-     scrollView: UIScrollView!
-     aboutMeButton: UIButton!
-     aboutMeBackImage: UIImageView!
      */
     let title: String
     let media_Type: String
-    let descriptionText: String
+    let description: String
     
-    init() {
-        
+    init?(day: Day) {
+        self.title = day.title
+        self.media_Type = day.media_type
+        self.description = day.explanation
     }
     
-    
 }
- */
+
+    
+
+
