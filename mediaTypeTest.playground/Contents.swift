@@ -24,5 +24,4 @@ extension Media  {
     }
 }
 //Media().configurMedia(type: media_type)
-//type"".configureMedia
 let M = Media(type: "image").configur()

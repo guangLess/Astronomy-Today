@@ -34,21 +34,21 @@ extension UIScrollView {
 }
 
 
-//FIXME: make it shorter
-struct Content {
-    let image: UIImage?
-    let videoLink: NSURL?
-}
-
-struct CreateContent {
-    let parse: String -> Content?
-}
-extension CreateContent {
-    init(/*url:String,*/parseMedia: String -> Content?){
-        self.parse = parseMedia
-    }
-}
-
-
+////FIXME: make it shorter maybe just a callback?
+//struct Content {
+//    let image: UIImage?
+//    let videoLink: NSURL?
+//}
+//
+//struct CreateContent {
+//    let parse: String -> Content?
+//}
+//extension CreateContent {
+//    init(/*url:String,*/parseMedia: String -> Content?){
+//        self.parse = parseMedia
+//    }
+//}
+//
+//
 
 

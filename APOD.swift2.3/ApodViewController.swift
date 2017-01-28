@@ -5,38 +5,6 @@
 //  Copyright © 2016 Guang. All rights reserved.
 import UIKit
 import Photos
-/*
-let aurl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
-let dayResource = Resource(url: aurl, parseJSON: { anyObject in
-    (anyObject as? NSDictionary).flatMap(Day.init)
-})
-let sharedWebservice = Webservice()
-
-protocol Loading {
-    var lineViewTwo : LineView {get}
-    func configure(value: Day)
-}
-
-extension Loading where Self: UIViewController {
-    func load(resource: Resource)  {
-        lineViewTwo.frame = self.view.frame
-        self.view.addSubview(lineViewTwo)
-        sharedWebservice.load(resource) { [weak self] result in
-            print("-------------------\(result)")
-            dispatch_async(dispatch_get_main_queue(), {
-                if result != nil {
-                    self?.lineViewTwo.fadeOut({ _ in
-                        self?.lineViewTwo.removeFromSuperview()
-                    })
-                    guard let todayData = result else {return}
-                    self?.configure(todayData)
-                }
-            })
-        }
-    }
-}
-*/
-
 
 let notificationKey = "back.toVC"
 
@@ -53,20 +21,19 @@ final class ApodViewController: UIViewController, LoadingApod {
     var apodToday = [Day]()//TIXME:why Day() will not work? Or make it into a call back?
     
     var shareVideoLink = NSURL()//FIXME: figure out a different way
-    //var lineViewTwo = LineView()
+    var lineViewTwo = LineView() //FIXME: maybe a call back
     //MARK:
     override func viewDidLoad() {
         super.viewDidLoad()
-        //load(dayResource)
-        //self.lineViewTwo.frame = self.view.frame
-        //self.view.addSubview(self.lineViewTwo)
-        
+        self.lineViewTwo.frame = self.view.frame
+        self.view.addSubview(self.lineViewTwo)
+
         load(dayResource) { [weak self] (dayContent) in
             self?.apodToday.append(dayContent)
                         dispatch_async(dispatch_get_main_queue(), {
-//            self.lineViewTwo.fadeOut({ _ in
-//                self.lineViewTwo.removeFromSuperview()
-//            })
+            self?.lineViewTwo.fadeOut({ _ in
+                self?.lineViewTwo.removeFromSuperview()
+            })
             //guard let content = dayContent else {fatalError("can not get APOD")}
             self?.configure(dayContent)
             })
@@ -94,7 +61,7 @@ final class ApodViewController: UIViewController, LoadingApod {
                 self.aboutButtonAnimate()
             })
         }
-        //aboutButtonAnimate
+        aboutButtonAnimate()
     }
     
     @IBAction func saveButton(sender: UIButton) {
@@ -120,33 +87,47 @@ final class ApodViewController: UIViewController, LoadingApod {
         todayTitle.text = value.title
         todayTitle.sizeToFit()
         descriptionText.text = value.explanation
-         if let todayMedia = configureMedia(value.url){
-         switch value.media_type {
-         case "image":
-         todayImageView.image = todayMedia.image
-         case "video":
-         let videoView = UIWebView()
-         videoView.frame = mediaView.bounds
-         videoView.backgroundColor = UIColor.clearColor()
-         self.mediaView.addSubview(videoView)
-         videoView.loadRequest(NSURLRequest(URL:todayMedia.videoLink!))//FIXME: fix this
-         shareVideoLink = todayMedia.videoLink!
-         default: break
-         }
-         }
-        //aboutButtonAnimate()
+        let mediaType = Media(type: value.media_type, url: value.url)
+        mediaType.configurTo(mediaView, todayImageView: todayImageView)
+        aboutButtonAnimate()
     }
-    
-    
-    func configureMedia(itsUrl: String) -> Content? {
-        let todayContent = CreateContent.init(parseMedia: {u in
-            let xImage = NSURL(string:u)
-                .flatMap{ NSData(contentsOfURL: $0)}
-                .flatMap{UIImage(data: $0)}
-            let xURL = NSURL(string: u)
-            return Content(image: xImage, videoLink: xURL)
-        })
-        return todayContent.parse(itsUrl)
+
+}
+
+struct Media {
+    let type: String
+    let url: String
+    let imageType: (String) -> (UIImage?) = { url in
+        return NSURL(string:url)
+            .flatMap{NSData(contentsOfURL: $0)}
+            .flatMap{UIImage(data: $0)}
+    }
+    let videoType: (UIView, String) -> () = { view, url  in
+        let videoView = UIWebView()
+        videoView.frame = view.bounds
+        videoView.backgroundColor = UIColor.clearColor()
+        view.addSubview(videoView)
+        videoView.loadRequest(NSURLRequest(URL:NSURL(string: url)!))
+    }
+}
+extension Media  {
+    func configurTo(mediaView: UIView, todayImageView: UIImageView){
+        switch self.type {
+        case "image" :
+            todayImageView.image = imageType(self.url)
+            print("x image")
+        case "video" :
+            print("x video")
+//            let videoView = UIWebView()
+//            videoView.frame = mediaView.bounds
+//            videoView.backgroundColor = UIColor.clearColor()
+//            mediaView.addSubview(videoView)
+//            videoView.loadRequest(NSURLRequest(URL:NSURL(string: self.url)! ))//FIXME: fix this
+           // shareVideoLink = todayMedia.videoLink!
+            videoType(mediaView, self.url)
+            
+        default: "other"
+        }
     }
 }
 
