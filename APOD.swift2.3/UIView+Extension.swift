@@ -5,9 +5,9 @@
 //  Created by Guang on 11/7/16.
 //  Copyright © 2016 Guang. All rights reserved.
 //
-/*
-import UIKit
 
+import UIKit
+/*
 extension UIView {
     public func constrainEqual(attribute: NSLayoutAttribute, to: AnyObject, _ toAttribute: NSLayoutAttribute, multiplier: CGFloat = 1, constant: CGFloat = 0) {
         NSLayoutConstraint.activateConstraints([
@@ -23,3 +23,32 @@ extension UIView {
     }
 }
 */
+
+
+extension UIScrollView {
+    func backToOrigin() {
+        var bounds = self.bounds
+        bounds.origin = CGPoint(x: 0, y: 0)
+        self.setContentOffset(bounds.origin, animated: true)
+    }
+}
+
+
+//FIXME: make it shorter
+struct Content {
+    let image: UIImage?
+    let videoLink: NSURL?
+}
+
+struct CreateContent {
+    let parse: String -> Content?
+}
+extension CreateContent {
+    init(/*url:String,*/parseMedia: String -> Content?){
+        self.parse = parseMedia
+    }
+}
+
+
+
+

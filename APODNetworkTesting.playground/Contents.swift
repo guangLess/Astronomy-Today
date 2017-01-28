@@ -87,17 +87,5 @@ struct ApodViewModel {
  }
 
  */
-let media_type = "image"
-let mediaContent = media_type
-switch mediaContent {
-    case "image" :
-    print("x image")
-    case "video" :
-    print("video")
-    default: "other"
-}
-
-let testMedia = mediaContent
-
 
 

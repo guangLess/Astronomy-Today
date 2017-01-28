@@ -12,6 +12,7 @@
 		622498AE1DB9AE3000B6D459 /* background-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498AD1DB9AE3000B6D459 /* background-moon-dark.png */; };
 		622498B01DB9AE5E00B6D459 /* PM2-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */; };
 		622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622498B41DBFEDDB00B6D459 /* WebService.swift */; };
+		626540B01E3CFEE20053CB98 /* ApodTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */; };
 		62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 62734BA21DCEBBD200634F2D /* half-moon-dark.png */; };
 		62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */; };
 		62AB5E601E39474600E8678C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB5E5F1E39474600E8678C /* ViewModel.swift */; };
@@ -68,6 +69,7 @@
 		622498AD1DB9AE3000B6D459 /* background-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-moon-dark.png"; sourceTree = "<group>"; };
 		622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PM2-icon.jpg"; sourceTree = "<group>"; };
 		622498B41DBFEDDB00B6D459 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodTestViewController.swift; sourceTree = "<group>"; };
 		62734BA21DCEBBD200634F2D /* half-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon-dark.png"; sourceTree = "<group>"; };
 		62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		62AB5E5F1E39474600E8678C /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				62AB5E5F1E39474600E8678C /* ViewModel.swift */,
 				622498A51DB91AEA00B6D459 /* AboutViewController.swift */,
+				626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */,
 			);
 			name = APOD;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */,
 				62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */,
+				626540B01E3CFEE20053CB98 /* ApodTestViewController.swift in Sources */,
 				622498A61DB91AEA00B6D459 /* AboutViewController.swift in Sources */,
 				62AB5E601E39474600E8678C /* ViewModel.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
