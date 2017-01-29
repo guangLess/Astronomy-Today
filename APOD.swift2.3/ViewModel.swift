@@ -7,54 +7,67 @@
 //
 
 import Foundation
+import UIKit
 
-//struct Media {
-//    let media_type : type
-//    //let content:
-//}
-//
-//enum type:String {
-//    case image = "image"
-//    case video = "video"
-//}
-//
-//struct ApodViewModel {
-//    /*
-//     todayTitle: UILabel!
-//     mediaView: UIView!
-//     descriptionText: UITextView!
-//     todayImageView: UIImageView!
-//     */
-//    let title: String
-//    let media_Type: String
-//    let description: String
-//    
-//    init?(day: Day) {
-//        self.title = day.title
-//        self.media_Type = day.media_type
-//        self.description = day.explanation
-//    }
-//    
-//}
-//
-//    
-let aurl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
-let dayResource = Resource(url: aurl, parseJSON: { anyObject in
-    (anyObject as? NSDictionary).flatMap(Day.init)
-})
+typealias apodDict = [String: String]
 
-protocol LoadingApod {
-    //var lineViewTwo : LineView {get}
-    //func configure(value: Day)
+struct Day{
+    let date: String
+    let explanation: String
+    let media_type: String
+    let title: String
+    let url: String
+}
+//FIXME: Change it to Dictionary. No need to cast String
+extension Day {
+    init?(dictionary: apodDict) {
+        guard let date = dictionary["date"],
+            explanation = dictionary["explanation"],
+            media_type = dictionary["media_type"],
+            title = dictionary["title"],
+            url = dictionary["url"]
+            //copyright = dictionary["copyright"] as? String
+            else{ return nil }
+        
+        self.date = date
+        self.explanation = explanation
+        self.media_type = media_type
+        self.title = title
+        self.url = url
+        //self.copyright = copyright
+    }
 }
 
-extension LoadingApod where Self: ApodViewController {
-    func load(resource: Resource, compliction:(dayContent: Day) -> Void)  {
-        Webservice().load(resource) { result in
-            print("-------------------\(result)")
-                    guard let todayData = result else {return}
-            compliction(dayContent: todayData)
-            
+
+struct Media {
+    let type: String
+    let url: String
+    let displayImage: (UIImageView, String)->() = { imageView, url in
+        let image = NSURL(string:url)
+            .flatMap{NSData(contentsOfURL: $0)}
+            .flatMap{UIImage(data: $0)}
+        imageView.image = image
+    }
+    let displayVideo: (UIView, String) -> () = { view, url  in
+        let videoView = UIWebView()
+        videoView.frame = view.bounds
+        videoView.backgroundColor = UIColor.clearColor()
+        view.addSubview(videoView)
+        videoView.loadRequest(NSURLRequest(URL:NSURL(string: url)!))
+    }
+}
+extension Media  {
+    func configurTo(mediaView: UIView, todayImageView: UIImageView){
+        switch self.type {
+        case "image" :
+            displayImage(todayImageView,self.url)
+            print("x image")
+        case "video" :
+            print("x video")
+            displayVideo(mediaView, self.url)
+        default: "other"
         }
     }
 }
+
+

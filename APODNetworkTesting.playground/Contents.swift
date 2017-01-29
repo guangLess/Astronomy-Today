@@ -3,7 +3,7 @@
 import UIKit
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
-/*
+
 typealias apodDict = [String: String]
 struct Day{
     let date: String
@@ -73,19 +73,7 @@ struct ApodViewModel {
         }
     }
 }
- */
+
 //------------Model for media content -------------
-/*
- var a = Types.Str("hello")
- a = .Num(1.0)
-
- switch a {
- case .Str(let val):
- print(val)
- case .Num(let val):
- print(val)                             // 1.0
- }
-
- */
 
 

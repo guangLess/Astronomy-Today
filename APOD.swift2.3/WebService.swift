@@ -8,55 +8,25 @@
 import Foundation
 import UIKit
 
-struct Day{
-    let date: String
-    let explanation: String
-    let media_type: String
-    let title: String
-    let url: String
-}
-//FIXME: Change it to Dictionary. No need to cast String
-extension Day {
-    init?(dictionary: NSDictionary) {
-        guard let date = dictionary["date"] as? String,
-               explanation = dictionary["explanation"] as? String,
-               media_type = dictionary["media_type"] as? String,
-               title = dictionary["title"] as? String,
-               url = dictionary["url"] as? String
-               //copyright = dictionary["copyright"] as? String
-            else{ return nil }
-        
-        self.date = date
-        self.explanation = explanation
-        self.media_type = media_type
-        self.title = title
-        self.url = url
-        //self.copyright = copyright
-    }
-}
-
-struct Resource {
+struct Resource<A> {
     let url: NSURL
-    let parse: NSData -> Day?
+    let parse: NSData -> A?
 }
 extension Resource{
-    init(url: NSURL, parseJSON: AnyObject -> Day?){
+    init(url: NSURL, parseJSON: AnyObject -> A?){
         self.url = url
         self.parse = { data in
            let json = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
-            let testJson = json.flatMap(parseJSON)
-            print(testJson)
             return json.flatMap(parseJSON)
         }
     }
 }
 
 final class Webservice {
-    func load(resource: Resource, completion: (Day?) -> ()){
+    func request(resource: Resource<Day>, completion: (Day?) -> ()){
         NSURLSession.sharedSession().dataTaskWithURL(resource.url){ data,_,_ in
             if let data = data{
                 let parseData = resource.parse(data)
-                print(parseData)
                 completion(parseData)
             }else {
                 completion(nil)
@@ -65,8 +35,20 @@ final class Webservice {
     }
 }
 
+let aurl = NSURL(string: "https://api.nasa.gov/planetary/apod?api_key=XQCVvM7SkdY4qrvNXSH00TkO6wRpsgPQyYDeA09T")!
+let dayResource = Resource<Day>(url: aurl, parseJSON: { json in
+    guard let dictionary = json as? apodDict else {return nil}
+    return Day.init(dictionary: dictionary)
+})
 
-
-
-
-
+protocol LoadingApod {}
+extension LoadingApod where Self: ApodViewController {
+    func load(resource: Resource<Day>, compliction:(dayContent: Day) -> Void)  {
+        Webservice().request(resource) { result in
+            print("-------------------\(result)")
+            guard let todayData = result else {return}
+            compliction(dayContent: todayData)
+            
+        }
+    }
+}

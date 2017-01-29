@@ -103,19 +103,16 @@ class LineView: UIView, Shapeble, CanBlink{
     }
 }
 
-
-//UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-//    self.alpha = 1.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
-//    }, completion: nil)
-
-extension UIView {
-    func fadeOut(completion:Bool -> ()){
+extension LineView {
+    func removeWithFadeOut(){
+        fadeOut { _ in
+            self.removeFromSuperview()
+        }
+    }
+    private func fadeOut(completion:Bool -> ()){
         UIView.animateWithDuration(5.5, animations: {
             self.alpha = 0.0 }) { _ in
                 completion(true)
         }
-//        UIView.animateWithDuration(9.5,) {
-//            self.alpha = 0.0
-//        },
     }
 }
