@@ -12,11 +12,9 @@
 		622498AE1DB9AE3000B6D459 /* background-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 622498AD1DB9AE3000B6D459 /* background-moon-dark.png */; };
 		622498B01DB9AE5E00B6D459 /* PM2-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */; };
 		622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622498B41DBFEDDB00B6D459 /* WebService.swift */; };
-		626540B01E3CFEE20053CB98 /* ApodTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */; };
 		62734BA31DCEBBD200634F2D /* half-moon-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 62734BA21DCEBBD200634F2D /* half-moon-dark.png */; };
 		62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */; };
 		62AB5E601E39474600E8678C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB5E5F1E39474600E8678C /* ViewModel.swift */; };
-		62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDC1E81DCBC92200A9E905 /* DrawButton.swift */; };
 		62D8A9BE1DD2D7840010AD04 /* AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9BD1DD2D7840010AD04 /* AM.png */; };
 		62D8A9C01DD62D7E0010AD04 /* half-moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9BF1DD62D7E0010AD04 /* half-moon.png */; };
 		62D8A9C21DD62D880010AD04 /* full-moon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D8A9C11DD62D880010AD04 /* full-moon_small.png */; };
@@ -30,7 +28,6 @@
 		62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D381DA2BD3700353999 /* PathExtention.swift */; };
 		62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3A1DA2DDB500353999 /* MathVizPath.swift */; };
 		62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D3C1DA3559000353999 /* ApodViewController.swift */; };
-		62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,11 +66,9 @@
 		622498AD1DB9AE3000B6D459 /* background-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-moon-dark.png"; sourceTree = "<group>"; };
 		622498AF1DB9AE5E00B6D459 /* PM2-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "PM2-icon.jpg"; sourceTree = "<group>"; };
 		622498B41DBFEDDB00B6D459 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodTestViewController.swift; sourceTree = "<group>"; };
 		62734BA21DCEBBD200634F2D /* half-moon-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon-dark.png"; sourceTree = "<group>"; };
 		62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		62AB5E5F1E39474600E8678C /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		62CDC1E81DCBC92200A9E905 /* DrawButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawButton.swift; sourceTree = "<group>"; };
 		62D8A9BD1DD2D7840010AD04 /* AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AM.png; sourceTree = "<group>"; };
 		62D8A9BF1DD62D7E0010AD04 /* half-moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half-moon.png"; sourceTree = "<group>"; };
 		62D8A9C11DD62D880010AD04 /* full-moon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-moon_small.png"; sourceTree = "<group>"; };
@@ -93,7 +88,6 @@
 		62F06D381DA2BD3700353999 /* PathExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathExtention.swift; sourceTree = "<group>"; };
 		62F06D3A1DA2DDB500353999 /* MathVizPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathVizPath.swift; sourceTree = "<group>"; };
 		62F06D3C1DA3559000353999 /* ApodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApodViewController.swift; sourceTree = "<group>"; };
-		62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtentionProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,12 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				622498B41DBFEDDB00B6D459 /* WebService.swift */,
-				62F06D571DA46A3F00353999 /* AppExtentionProtocol.swift */,
-				62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */,
-				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				62AB5E5F1E39474600E8678C /* ViewModel.swift */,
+				62F06D3C1DA3559000353999 /* ApodViewController.swift */,
 				622498A51DB91AEA00B6D459 /* AboutViewController.swift */,
-				626540AF1E3CFEE20053CB98 /* ApodTestViewController.swift */,
+				62A1A0211DD10F070040F3B2 /* UIView+Extension.swift */,
 			);
 			name = APOD;
 			sourceTree = "<group>";
@@ -208,7 +200,6 @@
 			children = (
 				62F06D381DA2BD3700353999 /* PathExtention.swift */,
 				62F06D361DA2BBDA00353999 /* LineView.swift */,
-				62CDC1E81DCBC92200A9E905 /* DrawButton.swift */,
 				62F06D3A1DA2DDB500353999 /* MathVizPath.swift */,
 			);
 			name = MathDrawing;
@@ -356,14 +347,11 @@
 			files = (
 				62F06D391DA2BD3700353999 /* PathExtention.swift in Sources */,
 				62F06D3D1DA3559000353999 /* ApodViewController.swift in Sources */,
-				626540B01E3CFEE20053CB98 /* ApodTestViewController.swift in Sources */,
 				622498A61DB91AEA00B6D459 /* AboutViewController.swift in Sources */,
 				62AB5E601E39474600E8678C /* ViewModel.swift in Sources */,
 				62F06D091DA2B82D00353999 /* AppDelegate.swift in Sources */,
 				62F06D371DA2BBDA00353999 /* LineView.swift in Sources */,
 				62A1A0221DD10F070040F3B2 /* UIView+Extension.swift in Sources */,
-				62F06D581DA46A3F00353999 /* AppExtentionProtocol.swift in Sources */,
-				62CDC1E91DCBC92200A9E905 /* DrawButton.swift in Sources */,
 				622498B51DBFEDDB00B6D459 /* WebService.swift in Sources */,
 				62F06D3B1DA2DDB500353999 /* MathVizPath.swift in Sources */,
 			);

@@ -38,7 +38,6 @@ extension Day {
     }
 }
 
-
 struct Media {
     let type: String
     let url: String
