@@ -7,10 +7,6 @@ import UIKit
 import Photos
 
 let notificationKey = "back.toVC"
-enum ShareMedia {
-    case image
-    case video
-}
 
 final class ApodViewController: UIViewController, LoadingApod {
     @IBOutlet weak var todayTitle: UILabel!
@@ -21,8 +17,8 @@ final class ApodViewController: UIViewController, LoadingApod {
     @IBOutlet weak var aboutMeButton: UIButton!
     @IBOutlet weak var aboutMeBackImage: UIImageView!
     
-    var shareVideoLink = NSURL()//FIXME: figure out a different way
-    var lineViewTwo = LineView() //FIXME: maybe a call back
+    var videoLink = NSURL()//FIXME: figure out a different way ShareContent Struct with "message" and media.
+    var lineViewTwo = LineView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +41,17 @@ final class ApodViewController: UIViewController, LoadingApod {
     @IBAction func shareButton(sender: UIButton) {//FIXME: refactor this
         print ("button share called")
         if let shareImage = todayImageView.image{
-            let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
-            self.presentViewController(vc, animated: true, completion: {
-                self.scrollView.backToOrigin()
-                self.aboutButtonAnimate()
-            })
+            share(shareImage)
         } else {
-            let vc = UIActivityViewController(activityItems:[shareVideoLink], applicationActivities: [])
-            self.presentViewController(vc, animated: true, completion: {
-                self.scrollView.backToOrigin()
-                self.aboutButtonAnimate()
-            })
+            share(videoLink)
         }
-        //aboutButtonAnimate()
+    }
+    private func share(content: AnyObject){
+        let vc = UIActivityViewController(activityItems: [content], applicationActivities: [])
+        self.presentViewController(vc, animated: true, completion: {
+            self.scrollView.backToOrigin()
+            self.aboutButtonAnimate()
+        })
     }
     
     @IBAction func saveButton(sender: UIButton) {
@@ -83,34 +77,9 @@ final class ApodViewController: UIViewController, LoadingApod {
         descriptionText.text = value.explanation
         let todayMedia = Media(type: value.media_type, url: value.url)
         todayMedia.configurTo(mediaView, todayImageView: todayImageView)
-    
+        videoLink = NSURL(string:value.url)!
         aboutButtonAnimate()
     }
-    
-    func share() -> Void{
-        let vc = UIActivityViewController(activityItems: ["hello"], applicationActivities: [])
-        self.presentViewController(vc, animated: true, completion: {
-            self.scrollView.backToOrigin()
-        })
-        
-    }   
 }
-/*
- if let shareImage = todayImageView.image{
- let vc = UIActivityViewController(activityItems: [shareImage], applicationActivities: [])
- self.presentViewController(vc, animated: true, completion: {
- self.scrollView.backToOrigin()
- self.aboutButtonAnimate()
- })
- } else {
- let vc = UIActivityViewController(activityItems:[shareVideoLink], applicationActivities: [])
- self.presentViewController(vc, animated: true, completion: {
- self.scrollView.backToOrigin()
- self.aboutButtonAnimate()
- })
- }
- */
-
-
 
 
