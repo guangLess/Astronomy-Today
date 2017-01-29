@@ -17,9 +17,6 @@ class AboutViewController: UIViewController {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        AboutButtonStruct.init().aboutBAnimate(self.backButton) { _ in
-        //            return true
-        //        }
         aboutText.text = contet.init().text
         aboutText.maximumZoomScale = 1
         aboutText.minimumZoomScale = 0.7

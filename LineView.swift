@@ -23,7 +23,6 @@ class LineView: UIView, Shapeble, CanBlink{
     
     override func drawRect(rect: CGRect){
         self.backgroundColor = UIColor.blackColor()
-        // WHY protocols can not store or contain storage ?
         //FIXME: figure out why the struc has to be called after the previous methods.
         drawPathElements()
         configerTimer()
@@ -34,7 +33,6 @@ class LineView: UIView, Shapeble, CanBlink{
         testPath = creatSimpleShapeReturn(faceCenter, radius: 30, startAngle: 0, endAngle: CGFloat(M_PI/3), clockwise: false, lineWidth: 1.0, pathColor: UIColor.whiteColor())
         outterRing = creatSimpleShapeReturn(faceCenter, radius: faceRadius, startAngle: CGFloat(M_PI/3), endAngle: CGFloat(2*M_PI), clockwise: true, lineWidth: 0.2, pathColor: UIColor.whiteColor())
         print(timeSequence)
-        //mathPath = MathVizPath(center: faceCenter, motion: Float(timeSequence)).pathMV
         drawRadialGradient()
     }
     func drawRadialGradient(){

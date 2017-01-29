@@ -19,6 +19,7 @@ final class ApodViewController: UIViewController, LoadingApod {
     
     var videoLink = NSURL()//FIXME: figure out a different way ShareContent Struct with "message" and media.
     var lineViewTwo = LineView()
+    let wtext = Webservice()
     
     override func viewDidLoad() {
         super.viewDidLoad()
