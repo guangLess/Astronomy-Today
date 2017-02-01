@@ -42,12 +42,14 @@ final class ApodViewController: UIViewController, LoadingApod {
 
     @IBAction func shareButton(sender: UIButton) {//FIXME: refactor this
         print ("button share called")
+        let element: (AnyObject) -> [AnyObject] = { content in
+            return [self.apodTitle + "Astro Pic Of The Day @apod", content]
+        }
+        
         if let shareImage = todayImageView.image{
-            let todayMedia = ["hello today", shareImage]
-            share(todayMedia)
+            share(element(shareImage))
         } else {
-            let todayvideo = [apodTitle + "Astro Pic Of The Day @apod", videoLink]
-            share(todayvideo)
+            share(element(videoLink))
         }
     }
     private func share(content: AnyObject){
