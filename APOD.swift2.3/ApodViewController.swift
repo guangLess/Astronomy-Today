@@ -19,6 +19,7 @@ final class ApodViewController: UIViewController, LoadingApod {
     
     var videoLink = NSURL()//FIXME: figure out a different way ShareContent Struct with "message" and media.
     var lineViewTwo = LineView()
+    var apodTitle = String()
     let wtext = Webservice()
     
     override func viewDidLoad() {
@@ -42,13 +43,15 @@ final class ApodViewController: UIViewController, LoadingApod {
     @IBAction func shareButton(sender: UIButton) {//FIXME: refactor this
         print ("button share called")
         if let shareImage = todayImageView.image{
-            share(shareImage)
+            let todayMedia = ["hello today", shareImage]
+            share(todayMedia)
         } else {
-            share(videoLink)
+            let todayvideo = [apodTitle + "Astro Pic Of The Day @apod", videoLink]
+            share(todayvideo)
         }
     }
     private func share(content: AnyObject){
-        let vc = UIActivityViewController(activityItems: [content], applicationActivities: [])
+        let vc = UIActivityViewController(activityItems: content as! [AnyObject], applicationActivities: [])
         self.presentViewController(vc, animated: true, completion: {
             self.scrollView.backToOrigin()
             self.aboutButtonAnimate()
@@ -56,14 +59,23 @@ final class ApodViewController: UIViewController, LoadingApod {
     }
     
     @IBAction func saveButton(sender: UIButton) {
-        let testImage = todayImageView.image
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromImage(testImage!)
-            }, completionHandler: { success, error in
-                print("added image to album\(success)")
-                if !success { fatalError("error creating asset: \(error)")}
-        })
-        scrollView.backToOrigin()
+        if let testImage = todayImageView.image {
+            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromImage(testImage)
+                }, completionHandler: { success, error in
+                    print("added image to album\(success)")
+                    if !success { fatalError("error creating asset: \(error)")}
+            })
+        } else {
+            let alertNote = "This video can not be downloaded."
+            let xVC = UIAlertController(title: alertNote, message: "", preferredStyle: .Alert)
+            self.presentViewController(xVC, animated: true, completion: nil)
+            let action = UIAlertAction(title: "okey 💔", style: .Default, handler: {[weak self] _ in
+                self?.scrollView.backToOrigin()
+                })
+            xVC.addAction(action)
+        }
+        //scrollView.backToOrigin()
     }
    //FIXME: why@objc
     @objc private func aboutButtonAnimate(){
@@ -79,6 +91,7 @@ final class ApodViewController: UIViewController, LoadingApod {
         let todayMedia = Media(type: value.media_type, url: value.url)
         todayMedia.configurTo(mediaView, todayImageView: todayImageView)
         videoLink = NSURL(string:value.url)!
+        apodTitle = value.title
         aboutButtonAnimate()
     }
 }
